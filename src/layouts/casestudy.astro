@@ -1,0 +1,40 @@
+---
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
+import "../styles/global.css";
+
+const { title, subtitle, heroImage, children } = Astro.props;
+---
+
+<main class="max-w-4xl mx-auto px-6 py-16">
+  <!-- Breadcrumb -->
+  <Breadcrumb class="mb-8">
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>{title}</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+  <!-- Hero / title -->
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-bold mb-2">{title}</h1>
+    {subtitle && <p class="text-lg text-muted-foreground">{subtitle}</p>}
+    {heroImage && <img src={heroImage} alt={title} class="mt-6 rounded-lg shadow-lg" />}
+  </header>
+
+  <!-- Main content -->
+  <article class="mx-auto space-y-12">
+    <slot />
+  </article>
+</main>

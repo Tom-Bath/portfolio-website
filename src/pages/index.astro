@@ -1,0 +1,102 @@
+---
+import "../styles/global.css";
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tom Bath – UX Portfolio</title>
+  </head>
+  <body class="bg-background text-foreground">
+    <main class="max-w-6xl mx-auto px-6 py-16">
+      <!-- Hero / intro -->
+      <section class="mb-16 text-center">
+        <h1 class="text-4xl font-bold mb-4">Tom Bath</h1>
+
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. UX engineer
+          exploring interaction design, spatial computing, and complex systems.
+        </p>
+      </section>
+
+      <!-- Case studies -->
+      <section class="grid gap-6 md:grid-cols-3">
+        <a href="/kaizen" class="no-underline hover:opacity-90 transition-opacity">
+          <Card>
+            <img
+              class="h-40 w-full object-cover"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
+              alt="Placeholder image"
+            />
+
+            <CardHeader>
+              <CardTitle>Kaizen Layout App</CardTitle>
+              <CardDescription>
+                Concept product inspired by industrial layout tools.
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+              <p class="text-sm text-muted-foreground">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                Wireframes, concept sketches, and interaction flows.
+              </p>
+            </CardContent>
+          </Card>
+        </a>
+
+        <Card>
+          <img
+            class="h-40 w-full object-cover"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
+            alt="Placeholder image"
+          />
+
+          <CardHeader>
+            <CardTitle>XR Navigation</CardTitle>
+            <CardDescription>
+              Spatial navigation UX built during my work at LP Research.
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+            <p class="text-sm text-muted-foreground">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Designing
+              navigation in augmented reality environments.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <img
+            class="h-40 w-full object-cover"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
+            alt="Placeholder image"
+          />
+
+          <CardHeader>
+            <CardTitle>Google Maps Route Planner</CardTitle>
+            <CardDescription>
+              Improving multi-destination planning workflows.
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+            <p class="text-sm text-muted-foreground">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Exploring
+              better interaction patterns for trip planning.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+    </main>
+  </body>
+</html>
