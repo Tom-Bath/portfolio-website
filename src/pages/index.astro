@@ -29,7 +29,10 @@ import {
 
       <!-- Case studies -->
       <section class="grid gap-6 md:grid-cols-3">
-        <a href="/kaizen" class="no-underline hover:opacity-90 transition-opacity">
+        <a
+          href={`${import.meta.env.BASE_URL}/kaizen`}
+          class="no-underline hover:opacity-90 transition-opacity"
+        >
           <Card>
             <img
               class="h-40 w-full object-cover"

@@ -18,19 +18,26 @@ const { title, subtitle, heroImage, children } = Astro.props;
   <Breadcrumb class="mb-8">
     <BreadcrumbList>
       <BreadcrumbItem>
-        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        <BreadcrumbLink href={import.meta.env.BASE_URL}>Home</BreadcrumbLink>
       </BreadcrumbItem>
+
       <BreadcrumbSeparator />
+
       <BreadcrumbItem>
         <BreadcrumbPage>{title}</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
+
   <!-- Hero / title -->
   <header class="mb-12 text-center">
     <h1 class="text-4xl font-bold mb-2">{title}</h1>
     {subtitle && <p class="text-lg text-muted-foreground">{subtitle}</p>}
-    {heroImage && <img src={heroImage} alt={title} class="mt-6 rounded-lg shadow-lg" />}
+    {
+      heroImage && (
+        <img src={heroImage} alt={title} class="mt-6 rounded-lg shadow-lg" />
+      )
+    }
   </header>
 
   <!-- Main content -->
