@@ -23,8 +23,16 @@ export const navigationStructure = {
       url: "#",
       items: [
         {
-          title: "Kaizen",
-          url: "/portfolio-website/kaizen",
+          title: "Kaizen Layout",
+          url: "/portfolio-website/kaizen-layout",
+        },
+        {
+          title: "XR Nav",
+          url: "/portfolio-website/xr-navigation",
+        },
+        {
+          title: "Maps Route",
+          url: "/portfolio-website/maps-route-planner",
         },
       ],
     },

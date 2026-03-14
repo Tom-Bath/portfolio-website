@@ -1,0 +1,108 @@
+---
+import CaseStudy from "@/layouts/casestudy.astro";
+
+const hero = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='48'%3EHero Image%3C/text%3E%3C/svg%3E";
+
+const placeholderLarge = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E";
+
+const placeholderMedium = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='32'%3EPlaceholder%3C/text%3E%3C/svg%3E";
+---
+
+<CaseStudy
+  title="Project Title"
+  subtitle="Short description of the product or concept"
+  heroImage={hero}
+>
+
+  <section>
+    <h2>Overview</h2>
+    <p>
+      Brief description of the project, what it is, and why it exists.
+    </p>
+
+    <ul>
+      <li><strong>Role:</strong> UX Design / Engineering</li>
+      <li><strong>Duration:</strong> X weeks</li>
+      <li><strong>Tools:</strong> Figma, Unity, etc</li>
+      <li><strong>Platform:</strong> Web / Mobile / XR</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Problem</h2>
+    <p>
+      What problem are users facing? What motivated the project?
+    </p>
+  </section>
+
+  <section>
+    <h2>Goals</h2>
+    <ul>
+      <li>Goal 1</li>
+      <li>Goal 2</li>
+      <li>Goal 3</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Research</h2>
+    <p>
+      Methods used to understand the problem (user interviews, analysis,
+      competitive research, etc).
+    </p>
+
+    <img src={placeholderLarge} alt="Research artifacts" />
+  </section>
+
+  <section>
+    <h2>Key Insights</h2>
+    <ul>
+      <li>User pain point or discovery</li>
+      <li>Unexpected behavior</li>
+      <li>Opportunity identified</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>User Flow</h2>
+    <p>
+      Main interaction path through the product.
+    </p>
+
+    <img src={placeholderLarge} alt="User flow diagram" />
+  </section>
+
+  <section>
+    <h2>Sketches & Wireframes</h2>
+
+    <img src={placeholderMedium} alt="Sketch 1" />
+    <img src={placeholderMedium} alt="Sketch 2" />
+  </section>
+
+  <section>
+    <h2>Prototype</h2>
+
+    <img src={placeholderLarge} alt="Prototype screens" />
+  </section>
+
+  <section>
+    <h2>Final Design</h2>
+
+    <img src={placeholderLarge} alt="Final UI" />
+  </section>
+
+  <section>
+    <h2>Outcome</h2>
+    <p>
+      Results, improvements, or evaluation of the design.
+    </p>
+  </section>
+
+  <section>
+    <h2>Reflection</h2>
+    <p>
+      What worked well, what could be improved, and key learnings.
+    </p>
+  </section>
+
+</CaseStudy>

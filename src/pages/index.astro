@@ -30,7 +30,7 @@ import {
       <!-- Case studies -->
       <section class="grid gap-6 md:grid-cols-3">
         <a
-          href={`${import.meta.env.BASE_URL}/kaizen`}
+          href={`${import.meta.env.BASE_URL}/kaizen-layout`}
           class="no-underline hover:opacity-90 transition-opacity"
         >
           <Card>
@@ -56,7 +56,11 @@ import {
           </Card>
         </a>
 
-        <Card>
+        <a
+          href={`${import.meta.env.BASE_URL}/xr-navigation`}
+          class="no-underline hover:opacity-90 transition-opacity"
+        >
+          <Card>
           <img
             class="h-40 w-full object-cover"
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
@@ -76,9 +80,14 @@ import {
               navigation in augmented reality environments.
             </p>
           </CardContent>
-        </Card>
+          </Card>
+        </a>
 
-        <Card>
+        <a
+          href={`${import.meta.env.BASE_URL}/maps-route-planner`}
+          class="no-underline hover:opacity-90 transition-opacity"
+        >
+          <Card>
           <img
             class="h-40 w-full object-cover"
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
@@ -98,7 +107,8 @@ import {
               better interaction patterns for trip planning.
             </p>
           </CardContent>
-        </Card>
+          </Card>
+        </a>
       </section>
     </main>
   </body>
