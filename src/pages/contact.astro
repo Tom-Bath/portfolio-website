@@ -1,4 +1,7 @@
 ---
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { SidebarLayout } from "@/components/sidebar-layout";
+
 import "../styles/global.css";
 
 import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
@@ -25,31 +28,38 @@ const contacts = [
 ];
 ---
 
-<main class="max-w-2xl mx-auto px-6 py-16">
-  <!-- Header -->
-  <header class="text-center mb-12">
-    <h1 class="text-4xl font-bold mb-2">Contact</h1>
-    <p class="text-muted-foreground">Feel free to reach out.</p>
-  </header>
+<SidebarLayout client:load title="Contact" baseUrl={import.meta.env.BASE_URL}>
+  <TooltipProvider client:load>
+    <!-- Centered content area -->
+    <div class="flex-1 flex items-center justify-center">
+      <div class="max-w-4xl mx-auto px-6 py-16 w-full">
+        <!-- Header -->
+        <header class="text-center mb-12">
+          <h1 class="text-4xl font-bold mb-2">Contact</h1>
+          <p class="text-muted-foreground">Feel free to reach out.</p>
+        </header>
 
-  <!-- Contact List -->
-  <div class="space-y-6">
-    {
-      contacts.map((item) => {
-        const Icon = item.icon;
+        <!-- Contact List -->
+        <div class="space-y-6">
+          {
+            contacts.map((item) => {
+              const Icon = item.icon;
 
-        return (
-          <a href={item.href} target="_blank" class="block">
-            <div class="flex items-center gap-4 px-6 py-4 border border-border rounded-lg hover:bg-muted/40 transition-colors">
-              <Icon class="w-5 h-5 text-muted-foreground flex-shrink-0" />
-              <span class="font-semibold">{item.label}</span>
-              <span class="ml-auto">
-                <ArrowUpRight class="w-5 h-5 text-muted-foreground flex-shrink-0" />
-              </span>
-            </div>
-          </a>
-        );
-      })
-    }
-  </div>
-</main>
+              return (
+                <a href={item.href} target="_blank" class="block">
+                  <div class="flex items-center gap-4 px-6 py-4 border border-border rounded-lg hover:bg-muted/40 transition-colors">
+                    <Icon class="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                    <span class="font-semibold">{item.label}</span>
+                    <span class="ml-auto">
+                      <ArrowUpRight class="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                    </span>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </TooltipProvider>
+</SidebarLayout>
