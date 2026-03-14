@@ -13,14 +13,14 @@ import {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Tom Bath – UX Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tom Bath - UX Portfolio</title>
   </head>
   <body class="bg-background text-foreground">
-    <main class="max-w-6xl mx-auto px-6 py-16">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <!-- Hero / intro -->
       <section class="mb-16 text-center">
         <h1 class="text-4xl font-bold mb-4">Tom Bath</h1>
-
         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. UX engineer
           exploring interaction design, spatial computing, and complex systems.
@@ -28,25 +28,24 @@ import {
       </section>
 
       <!-- Case studies -->
-      <section class="grid gap-6 md:grid-cols-3">
+      <section class="grid gap-8 grid-cols-1 md:grid-cols-3">
+        <!-- Kaizen Layout App -->
         <a
           href={`${import.meta.env.BASE_URL}/kaizen-layout`}
-          class="no-underline hover:opacity-90 transition-opacity"
+          class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
-          <Card>
+          <Card class="hover:shadow-lg">
             <img
-              class="h-40 w-full object-cover"
+              class="h-72 w-full object-cover"
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
               alt="Placeholder image"
             />
-
             <CardHeader>
               <CardTitle>Kaizen Layout App</CardTitle>
               <CardDescription>
                 Concept product inspired by industrial layout tools.
               </CardDescription>
             </CardHeader>
-
             <CardContent>
               <p class="text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet consectetur adipiscing elit.
@@ -56,57 +55,55 @@ import {
           </Card>
         </a>
 
+        <!-- XR Navigation -->
         <a
           href={`${import.meta.env.BASE_URL}/xr-navigation`}
-          class="no-underline hover:opacity-90 transition-opacity"
+          class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
-          <Card>
-          <img
-            class="h-40 w-full object-cover"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
-            alt="Placeholder image"
-          />
-
-          <CardHeader>
-            <CardTitle>XR Navigation</CardTitle>
-            <CardDescription>
-              Spatial navigation UX built during my work at LP Research.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <p class="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit. Designing
-              navigation in augmented reality environments.
-            </p>
-          </CardContent>
+          <Card class="hover:shadow-lg">
+            <img
+              class="h-72 w-full object-cover"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
+              alt="Placeholder image"
+            />
+            <CardHeader>
+              <CardTitle>XR Navigation</CardTitle>
+              <CardDescription>
+                Spatial navigation UX built during my work at LP Research.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p class="text-sm text-muted-foreground">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                Designing navigation in augmented reality environments.
+              </p>
+            </CardContent>
           </Card>
         </a>
 
+        <!-- Google Maps Route Planner -->
         <a
           href={`${import.meta.env.BASE_URL}/maps-route-planner`}
-          class="no-underline hover:opacity-90 transition-opacity"
+          class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
-          <Card>
-          <img
-            class="h-40 w-full object-cover"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
-            alt="Placeholder image"
-          />
-
-          <CardHeader>
-            <CardTitle>Google Maps Route Planner</CardTitle>
-            <CardDescription>
-              Improving multi-destination planning workflows.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <p class="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit. Exploring
-              better interaction patterns for trip planning.
-            </p>
-          </CardContent>
+          <Card class="hover:shadow-lg">
+            <img
+              class="h-72 w-full object-cover"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
+              alt="Placeholder image"
+            />
+            <CardHeader>
+              <CardTitle>Google Maps Route Planner</CardTitle>
+              <CardDescription>
+                Improving multi-destination planning workflows.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p class="text-sm text-muted-foreground">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit.
+                Exploring better interaction patterns for trip planning.
+              </p>
+            </CardContent>
           </Card>
         </a>
       </section>
