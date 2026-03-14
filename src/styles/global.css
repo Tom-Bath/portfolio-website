@@ -149,7 +149,7 @@ article section:first-child {
 }
 
 article h2 {
-  @apply text-2xl font-bold mb-4 mt-6 font-bebas;
+  @apply text-2xl font-bold mb-4 mt-6;
 }
 
 article p {
@@ -158,4 +158,16 @@ article p {
 
 article img {
   @apply my-6 rounded-lg shadow-lg w-full;
+}
+
+article ul {
+  @apply my-4 ml-6 list-disc;
+}
+
+article ol {
+  @apply my-4 ml-6 list-decimal;
+}
+
+article li {
+  @apply mb-2;
 }
