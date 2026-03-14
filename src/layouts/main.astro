@@ -1,6 +1,6 @@
 ---
-import { SidebarLayout } from "@/components/sidebar-layout"
-import "@/styles/global.css"
+import { SidebarLayout } from "@/components/sidebar-layout";
+import "@/styles/global.css";
 ---
 
 <html lang="en">
@@ -10,7 +10,7 @@ import "@/styles/global.css"
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Astro App</title>
   </head>
-  <body>
+  <body class="bg-background text-foreground">
     <SidebarLayout client:load>
       <slot />
     </SidebarLayout>
