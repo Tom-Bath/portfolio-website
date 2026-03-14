@@ -8,6 +8,11 @@ import "@/styles/global.css";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Font preloading to prevent FOUT (Flash of Unstyled Text) -->
+    <link rel="preload" as="font" type="font/woff2" href="/portfolio-website/fonts/dm-sans-latin-regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/ttf" href="/portfolio-website/fonts/BebasNeue-Regular.ttf" crossorigin fetchpriority="high" />
+
     <title>Astro App</title>
   </head>
   <body class="bg-background text-foreground">

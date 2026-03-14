@@ -4,15 +4,13 @@ import { SidebarLayout } from "@/components/sidebar-layout";
 
 import "../styles/global.css";
 
-const { title, subtitle, heroImage, children } = Astro.props;
+const { title, subtitle, heroImage } = Astro.props;
 ---
 
 <SidebarLayout client:load title={title} baseUrl={import.meta.env.BASE_URL}>
   <TooltipProvider client:load>
-    <!-- Centered content area -->
     <div class="flex-1 flex items-center justify-center">
       <div class="max-w-4xl mx-auto px-6 py-16 w-full">
-        <!-- Hero / title -->
         <header class="mb-12 text-center">
           <h1 class="text-4xl font-bold mb-2 font-bebas">{title}</h1>
 
@@ -29,8 +27,9 @@ const { title, subtitle, heroImage, children } = Astro.props;
           }
         </header>
 
-        <!-- Main content -->
-        <article class="mx-auto space-y-12">
+        <article
+          class="mx-auto space-y-12 prose prose-neutral dark:prose-invert"
+        >
           <slot />
         </article>
       </div>

@@ -23,8 +23,8 @@ export const navigationStructure = {
       url: "#",
       items: [
         {
-          title: "Kaizen Layout",
-          url: "/portfolio-website/kaizen-layout",
+          title: "Warehouse Flow",
+          url: "/portfolio-website/warehouse-flow",
         },
         {
           title: "XR Nav",
