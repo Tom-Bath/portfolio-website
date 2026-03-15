@@ -7,32 +7,46 @@ import "../styles/global.css";
 const { title, subtitle, heroImage } = Astro.props;
 ---
 
-<SidebarLayout client:load title={title} baseUrl={import.meta.env.BASE_URL}>
-  <TooltipProvider client:load>
-    <div class="flex-1 flex items-center justify-center">
-      <div class="max-w-4xl mx-auto px-6 py-16 w-full">
-        <header class="mb-12 text-center">
-          <h1 class="text-4xl font-bold mb-2 font-bebas">{title}</h1>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-          {subtitle && <p class="text-lg text-muted-foreground">{subtitle}</p>}
+    <link rel="preload" as="font" type="font/woff2" href="/portfolio-website/fonts/dm-sans-latin-regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/ttf" href="/portfolio-website/fonts/BebasNeue-Regular.ttf" crossorigin fetchpriority="high" />
 
-          {
-            heroImage && (
-              <img
-                src={heroImage}
-                alt={title}
-                class="mt-6 rounded-lg shadow-lg"
-              />
-            )
-          }
-        </header>
+    <title>{title}</title>
+  </head>
+  <body class="bg-background text-foreground">
+    <SidebarLayout client:load title={title} baseUrl={import.meta.env.BASE_URL}>
+      <TooltipProvider client:load>
+        <div class="flex-1 flex items-center justify-center">
+          <div class="max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-16 w-full">
+            <header class="mb-12 text-center">
+              <h1 class="text-4xl font-bold mb-2 font-bebas">{title}</h1>
 
-        <article
-          class="mx-auto space-y-12 prose prose-neutral dark:prose-invert"
-        >
-          <slot />
-        </article>
-      </div>
-    </div>
-  </TooltipProvider>
-</SidebarLayout>
+              {subtitle && <p class="text-lg text-muted-foreground">{subtitle}</p>}
+
+              {
+                heroImage && (
+                  <img
+                    src={heroImage}
+                    alt={title}
+                    class="mt-6 rounded-lg shadow-lg"
+                  />
+                )
+              }
+            </header>
+
+            <article
+              class="mx-auto space-y-12 prose prose-neutral dark:prose-invert"
+            >
+              <slot />
+            </article>
+          </div>
+        </div>
+      </TooltipProvider>
+    </SidebarLayout>
+  </body>
+</html>
