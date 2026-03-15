@@ -9,14 +9,16 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { t, type Locale } from "@/lib/i18n"
 
 interface SidebarLayoutProps {
   children: React.ReactNode
   title?: string
   baseUrl?: string
+  locale?: Locale
 }
 
-export function SidebarLayout({ children, title, baseUrl }: SidebarLayoutProps) {
+export function SidebarLayout({ children, title, baseUrl, locale = "en" }: SidebarLayoutProps) {
   const [headerVisible, setHeaderVisible] = React.useState(true)
   const lastScrollY = React.useRef(0)
 
@@ -35,9 +37,11 @@ export function SidebarLayout({ children, title, baseUrl }: SidebarLayoutProps) 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const homeUrl = locale === "ja" ? `${baseUrl}/ja/` : `${baseUrl}/`
+
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar locale={locale} base={baseUrl} />
       <main className="w-full flex flex-col">
         {title && baseUrl && (
           <div
@@ -49,7 +53,7 @@ export function SidebarLayout({ children, title, baseUrl }: SidebarLayoutProps) 
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink href={baseUrl}>Home</BreadcrumbLink>
+                  <BreadcrumbLink href={homeUrl}>{t(locale, "home")}</BreadcrumbLink>
                 </BreadcrumbItem>
 
                 <BreadcrumbSeparator />

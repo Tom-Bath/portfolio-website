@@ -4,11 +4,11 @@ import CaseStudy from "@/layouts/casestudy.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("case-studies", ({ id }) =>
-    id.startsWith("en/")
+    id.startsWith("ja/")
   );
 
   return posts.map((post) => ({
-    params: { slug: post.id.replace("en/", "") },
+    params: { slug: post.id.replace("ja/", "") },
     props: { post },
   }));
 }
@@ -21,7 +21,7 @@ const { Content } = await render(post);
   title={post.data.title}
   subtitle={post.data.subtitle}
   heroImage={post.data.heroImage}
-  locale="en"
+  locale="ja"
 >
   <Content />
 </CaseStudy>

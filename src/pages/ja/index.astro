@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import "../../styles/global.css";
 
 import {
   Card,
@@ -8,27 +8,29 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+
+const base = import.meta.env.BASE_URL;
 ---
 
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tom Bath - UX Portfolio</title>
+    <title>Tom Bath - UXポートフォリオ</title>
   </head>
   <body class="bg-background text-foreground">
     <a
-      href={`${import.meta.env.BASE_URL}/ja/`}
+      href={`${base}/`}
       class="fixed top-4 right-4 z-50 px-3 py-1.5 text-sm font-medium border border-border rounded-md bg-background hover:bg-muted/40 transition-colors"
     >
-      日本語
+      English
     </a>
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <!-- Hero / intro -->
       <section class="mb-8 text-center">
         <h1 class="text-8xl font-bold mb-4 font-bebas">Tom Bath</h1>
         <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-          UX engineer exploring interaction design, spatial computing, and complex systems.
+          インタラクションデザイン・空間コンピューティング・複雑系を探求するUXエンジニア。
         </p>
       </section>
 
@@ -36,7 +38,7 @@ import {
       <section class="grid gap-8 grid-cols-1 md:grid-cols-3">
         <!-- Kaizen Layout App -->
         <a
-          href={`${import.meta.env.BASE_URL}/warehouse-flow`}
+          href={`${base}/ja/warehouse-flow`}
           class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
           <Card class="hover:shadow-lg">
@@ -46,14 +48,14 @@ import {
               alt="Placeholder image"
             />
             <CardHeader>
-              <CardTitle>Kaizen Layout App</CardTitle>
+              <CardTitle>倉庫レイアウトアプリ</CardTitle>
               <CardDescription>
-                Concept product inspired by industrial layout tools.
+                （準備中）
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                Wireframes, concept sketches, and interaction flows for a canvas-based layout application.
+                （準備中）
               </p>
             </CardContent>
           </Card>
@@ -61,7 +63,7 @@ import {
 
         <!-- XR Navigation -->
         <a
-          href={`${import.meta.env.BASE_URL}/xr-navigation`}
+          href={`${base}/ja/xr-navigation`}
           class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
           <Card class="hover:shadow-lg">
@@ -71,14 +73,14 @@ import {
               alt="Placeholder image"
             />
             <CardHeader>
-              <CardTitle>XR Navigation</CardTitle>
+              <CardTitle>XRナビゲーション</CardTitle>
               <CardDescription>
-                Spatial navigation UX built during my work at ABC123.
+                （準備中）
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                Designing spatial navigation patterns for augmented reality environments.
+                （準備中）
               </p>
             </CardContent>
           </Card>
@@ -86,7 +88,7 @@ import {
 
         <!-- Google Maps Route Planner -->
         <a
-          href={`${import.meta.env.BASE_URL}/maps-route-planner`}
+          href={`${base}/ja/maps-route-planner`}
           class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
           <Card class="hover:shadow-lg">
@@ -96,14 +98,14 @@ import {
               alt="Placeholder image"
             />
             <CardHeader>
-              <CardTitle>Google Maps Route Planner</CardTitle>
+              <CardTitle>マップルートプランナー</CardTitle>
               <CardDescription>
-                Improving multi-destination planning workflows.
+                （準備中）
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                Improving multi-stop route planning and interaction patterns for travellers.
+                （準備中）
               </p>
             </CardContent>
           </Card>

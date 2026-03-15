@@ -1,0 +1,71 @@
+---
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { SidebarLayout } from "@/components/sidebar-layout";
+
+import "../../styles/global.css";
+
+import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
+
+const contacts = [
+  {
+    icon: Mail,
+    label: "メール",
+    value: "tom.bath.connect@gmail.com",
+    href: "mailto:tom.bath.connect@gmail.com",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/tom-bath",
+    href: "https://linkedin.com/in/tom-bath",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/Tom-Bath",
+    href: "https://github.com/Tom-Bath",
+  },
+];
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お問い合わせ - Tom Bath</title>
+  </head>
+  <body class="bg-background text-foreground">
+    <SidebarLayout client:load title="お問い合わせ" baseUrl={import.meta.env.BASE_URL} locale="ja">
+      <TooltipProvider client:load>
+        <div class="flex-1 flex items-center justify-center">
+          <div class="max-w-4xl mx-auto px-6 py-16 w-full">
+            <header class="text-center mb-12">
+              <h1 class="text-4xl font-bold mb-2">お問い合わせ</h1>
+              <p class="text-muted-foreground">お気軽にご連絡ください。</p>
+            </header>
+
+            <div class="space-y-6">
+              {
+                contacts.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <a href={item.href} target="_blank" class="block">
+                      <div class="flex items-center gap-4 px-6 py-4 border border-border rounded-lg hover:bg-muted/40 transition-colors">
+                        <Icon class="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                        <span class="font-semibold">{item.label}</span>
+                        <span class="ml-auto">
+                          <ArrowUpRight class="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </TooltipProvider>
+    </SidebarLayout>
+  </body>
+</html>

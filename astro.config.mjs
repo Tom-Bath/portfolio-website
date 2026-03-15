@@ -8,6 +8,14 @@ export default defineConfig({
   site: "https://Tom-Bath.github.io",
   base: "/portfolio-website",
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "ja"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
