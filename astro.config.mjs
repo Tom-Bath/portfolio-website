@@ -1,8 +1,9 @@
 // @ts-check
 
-import tailwindcss from "@tailwindcss/vite"
-import { defineConfig } from "astro/config"
-import react from "@astrojs/react"
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import astroMermaid from "astro-mermaid";
 
 export default defineConfig({
   site: "https://Tom-Bath.github.io",
@@ -20,5 +21,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react()],
-})
+  integrations: [
+    react(),
+    astroMermaid({
+      theme: "base",
+      autoTheme: true
+    }),
+  ],
+});
