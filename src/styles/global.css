@@ -174,3 +174,10 @@ article ol {
 article li {
   @apply mb-2;
 }
+article h3 {
+  @apply text-xl font-semibold mb-3 mt-5;
+}
+
+article blockquote {
+  @apply border-l-4 border-border pl-4 italic text-muted-foreground my-6;
+}

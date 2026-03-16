@@ -6,110 +6,101 @@ heroImage: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox
 
 ## Overview
 
-This project involved improving the usability of a web-based tool used by logistics **Kaizen experts** to design and evaluate warehouse material flow.
+This project focused on improving the usability of a web-based logistics simulation tool used by warehouse **Kaizen specialists** to design and evaluate material flow systems.
 
-The product combines two modeling environments:
+The platform combines two modeling environments:
 
-- A **process flow editor** used to define warehouse operations
-- A **3D layout editor** used to design the physical warehouse space
+- **A process flow editor** describing warehouse operations  
+- **A 2D layout editor** representing the physical warehouse  
 
-Together these models feed into a simulation engine that generates data about asset movement and operational efficiency.
+These models feed into a simulation engine that models system behaviour such as:
 
-I joined the project midway through development to assist the frontend team with UX decisions and usability improvements across the interface.
+- Worker movement and actions
+- Truck arrivals and departures
+- Material flow through the warehouse
 
-Before this tool existed, experts typically relied on a combination of diagram tools like Lucidchart and spreadsheets such as Microsoft Excel to design warehouse processes and analyze performance.
+I joined the project midway through development as a Simulation Engineer. However, as a member of the project team I was able to support the frontend team with UX improvements to the modeling interface.
 
-- **Role:** Simulation Engineer supporting frontend UX
-- **Duration:** 3 months
-- **Tools:** Figma, Lucidboard
-- **Platform:** Web (React, React Flow, React Three Fiber)
+**Role:** Simulation Engineer contributing UX and interaction improvements  
+**Duration:** 6+ months  
+**Tech:** Figma, Unity, React, React Flow, React Three Fiber
+
+---
 
 ## Problem
 
-Warehouse planning requires combining **process logic** with **physical layout design**. Traditionally these tasks are handled in separate tools.
+As the system grew more complex, usability issues began to emerge.
 
-Process flows are diagrammed in visual tools, while calculations and planning data live in spreadsheets. This fragmented workflow makes iteration slow and makes it difficult to evaluate how layout changes affect operations.
+Users struggled to understand relationships between the process model and the physical warehouse layout, and complex diagrams became difficult to manage.
 
-The product aimed to unify these workflows into a single environment where users could model process flow, design the warehouse layout, and simulate movement through the system.
+These problems made it difficult for users to build complex warehouse simulations without guidance from engineers.
 
-When I joined the project, the core architecture already separated two modeling environments:
+User testing and internal feedback revealed several patterns:
 
-- Process flow modeling
-- Physical warehouse layout design
+### Process logic and physical space were mentally disconnected
 
-While this matched how Kaizen experts think about logistics systems, switching between the two views could create confusion and cognitive overhead. Improving clarity between these representations became a key focus of my work.
+Users had difficulty understanding how nodes in the process diagram corresponded to physical elements in the warehouse layout. This was particularly problematic with the use of **Link** blocks, which were originally used to act as the link between the two views.
 
-## Goals
+### Real warehouse flows were too large to model quickly
 
-- **Improve usability of the existing interface**
-  Identify friction points in the current workflows and refine interactions.
+Practical models often contained dozens of nodes and connections, which exposed weaknesses in the diagram interaction design. Moving and editing multiple blocks was problematic. 
 
-- **Support real-world Kaizen workflows**
-  Ensure the system reflected how experts naturally analyze logistics systems.
+### Small interaction problems created large cognitive load
 
-- **Clarify relationships between models**
-  Reduce cognitive overhead when switching between process flow editing and spatial layout design.
+Weak selection states and unclear connection wires made it difficult for users to track what they were editing.
 
-## Research
+---
 
-Research focused on understanding both the domain workflows and the existing implementation of the tool.
+## Design Improvements
 
-- **Workflow analysis**
-  Studying how warehouse specialists currently design systems using diagram tools and spreadsheets.
+The team’s UX improvements focused on reducing friction in the modeling workflow.
 
-- **Interface evaluation**
-  Reviewing the existing product to identify usability friction and interaction issues.
+[Add Images here!]
 
-- **Domain collaboration**
-  Working with logistics specialists to understand how process modeling and layout planning interact during warehouse optimization.
+Areas where I made major contributions included:
 
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E" alt="Research artifacts" />
+### Design and Development of Validation Feedback Tab
 
-## Key Insights
+To support frontend developers, I created a validation system in Unity which would read configuration files for errors and warnings. This info was fed back to the frontend automatically.
 
-- **Process modeling usually comes first**
-  Experts typically define the logical flow of assets before considering the physical layout of the warehouse.
+I was given the freedom to design and implement the entire tab, so I explored various ideas for how to show the errors. I sketched some wireframes and went through with the UX team on potential benefits or painpoints for each idea, as well as the frontend team on which designs would be the easiest to implement.
 
-- **Abstract models reduce complexity**
-  Allowing users to design workflows without spatial constraints helped simplify early-stage planning.
+The final design was a variation of the dropdown design, where items were displayed in 'Priority' order - fixing issues near the top of the list would often indirectly also fix latter issues. The use of symbols was limited as the perception of having lots of error or warning icons was intimidating to users (both developers and real users)
 
-- **Context switching creates cognitive load**
-  Users had to mentally connect abstract process diagrams with physical warehouse locations when moving between the two editors.
+### Improving node readability
 
-## User Flow
+Nodes were redesigned with clearer iconography and labeling to help distinguish the physical and process views. By using full-colour, isometric graphics for the physical view, and flat icons for the process view, helped to differentiate between tangible things and theoretical representations. 
 
-The primary workflow for the tool followed three stages:
+### Process View refinement
 
-1. **Define process flow**
-   Users create a node-based flow diagram describing warehouse operations.
+In the earlier versions of this view, all elemnts had very similar deisgn, and there was a lot of complexity with how many blocks and connections there were. 
 
-2. **Design warehouse layout**
-   Users construct a spatial representation of the warehouse environment.
+I advocated for removing the "Link" block entirely, and helped design the latter design included a small tab to show the connections instead. 
 
-3. **Run simulation**
-   The system generates asset movement data to evaluate performance and throughput.
+User tests showed that people wanted to move multiple nodes simultaneously, allowing larger diagrams to be reorganized more easily. I helped to add multi-select logic, and worked with UX to agree on how to modify the mouse and keyboard imputs. Holding the left mouse down felt natural to most tech-literate users.
 
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E" alt="User flow diagram" />
+---
 
-## Sketches & Wireframes
+## Process
 
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='32'%3EPlaceholder%3C/text%3E%3C/svg%3E" alt="Sketch 1" />
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='32'%3EPlaceholder%3C/text%3E%3C/svg%3E" alt="Sketch 2" />
+Because the product was already in development, improvements were introduced incrementally alongside ongoing feature work.
 
-## Prototype
+Rather than a separate prototyping phase, the team relied on regular user testing sessions and internal feedback to identify friction points in the interface.
 
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E" alt="Prototype screens" />
+Design changes were implemented and evaluated through repeated testing with domain experts.
 
-## Final Design
+This approach allowed the team to improve existing workflows while development continued on new functionality.
 
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E" alt="Final UI" />
+One trade-off of this approach was that feedback often came from a small number of users, which introduced some risk of overfitting solutions to specific workflows. However, it enabled the team to rapidly address usability problems as they appeared.
 
-## Outcome
-
-The project created a unified workflow for modeling warehouse operations and evaluating performance through simulation. By combining process flow design, spatial layout editing, and simulation results into a single system, the tool enabled faster iteration and clearer evaluation of logistics scenarios.
+---
 
 ## Reflection
 
-Working on this project highlighted the challenges of designing interfaces for complex domain tools. Separating abstract process modeling from physical layout editing supported expert workflows, but it also introduced challenges in maintaining a clear mental model when switching contexts.
+Designing tools for specialized industrial workflows requires balancing flexibility with clarity.
 
-The experience reinforced the importance of aligning interface structure with how domain experts think about problems, while also reducing friction between different representations of the same system.
+Even small usability issues can significantly slow down expert users working with complex systems.
+
+This project demonstrated how incremental UX improvements and close collaboration with domain specialists can significantly improve the usability of an already complex product.
+
+> Due to NDA constraints, detailed screenshots and metrics cannot be publicly shared. All sketches contain minor semantic differences to the real UX design. 
