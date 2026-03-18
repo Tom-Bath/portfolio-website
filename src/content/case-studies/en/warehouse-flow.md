@@ -1,7 +1,7 @@
 ---
 title: Warehouse Flow Modeling Tool
 subtitle: Improving the usability of a logistics simulation interface.
-heroImage: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='36'%3EPlaceholder Image%3C/text%3E%3C/svg%3E"
+heroImage: "src/content/case-studies/processview.svg"
 ---
 
 ## Overview
@@ -66,30 +66,6 @@ My contributions included:
 - Creating interface concepts and visual aids
 - Collaborating with frontend developers implementing the interface in React
 
-[Add Images here!]
-
-Areas where I made major contributions included:
-
-### Design and Development of Validation Feedback Tab
-
-To support frontend developers, I created a validation system in Unity which would read configuration files for errors and warnings. This info was fed back to the frontend automatically.
-
-I was given the freedom to design and implement the entire tab, so I explored various ideas for how to show the errors. I sketched some wireframes and went through with the UX team on potential benefits or painpoints for each idea, as well as the frontend team on which designs would be the easiest to implement.
-
-The final design was a variation of the dropdown design, where items were displayed in 'Priority' order - fixing issues near the top of the list would often indirectly also fix latter issues. The use of symbols was limited as the perception of having lots of error or warning icons was intimidating to users (both developers and real users)
-
-### Improving node readability
-
-Nodes were redesigned with clearer iconography and labeling to help distinguish the physical and process views. By using full-colour, isometric graphics for the physical view, and flat icons for the process view, helped to differentiate between tangible things and theoretical representations. 
-
-### Process View refinement
-
-In the earlier versions of this view, all elemnts had very similar deisgn, and there was a lot of complexity with how many blocks and connections there were. 
-
-I advocated for removing the "Link" block entirely, and helped design the latter design included a small tab to show the connections instead. 
-
-User tests showed that people wanted to move multiple nodes simultaneously, allowing larger diagrams to be reorganized more easily. I helped to add multi-select logic, and worked with UX to agree on how to modify the mouse and keyboard imputs. Holding the left mouse down felt natural to most tech-literate users.
-
 ---
 
 ## Research and Insights
@@ -107,6 +83,20 @@ Despite these constraints, I was able to indentify **several important insights:
 - While the primary users were expected to be Kaizen experts, the product was also intended for logistics hub managers and operational staff who may not have formal Kaizen training. This meant the system needed to remain approachable and usable without deep knowledge of Kaizen-specific methods.
 
 These insights suggested that the tool must carefully balance familiar iconography and workflow for Kaizen Experts, while being accessibile enough for non-specialists.
+<div class="grid grid-cols-3 gap-4 my-6">
+  <img 
+    src="/portfolio-website/case-studies/valuestreamlayout.png" 
+    alt="Value Stream Mapping Layout"
+    class="col-span-2 w-full h-auto"
+  />
+  <img 
+    src="/portfolio-website/case-studies/valuestreamshapes.png" 
+    alt="Value Stream Mapping Shapes"
+    class="col-span-1 w-full h-auto"
+  />
+</div>
+
+> These images are examples of the Value Stream Map layout and iconography - the MIFC version is similar.
 
 ## Design Process and Solutions
 
@@ -124,15 +114,17 @@ The final design presented validation issues in a prioritized list using collaps
 
 ### Improving Node Readability
 
-The modeling nodes were redesigned to improve visual clarity between the two main modeling contexts: physical layout and process flow.
+Several changes were made to improve the clarity and consistency of nodes across the modeling interface:
 
-Physical elements were represented using full-colour isometric graphics to emphasize tangible warehouse equipment, while process elements used flatter iconography to represent abstract workflow steps. This visual distinction helped users more easily understand the difference between real-world objects and process logic.
+In earlier versions of the process view, logical blocks and “Link” blocks were separate elements. The Link blocks represented connections to physical equipment in the warehouse layout, which added extra visual clutter and made diagrams harder to read. I proposed merging these into a single logical block, with the physical connection shown as a small tab beneath the node. This reduced the number of elements in the diagram and simplified the workflow.
+
+The iconography used in the process view was also inconsistent. Some nodes used standard icons while others used abstract Value Stream Mapping–style symbols, which many users found difficult to interpret. I helped standardize the interface by replacing these with clear, conventional icons, improving readability for both Kaizen experts and non-specialist users.
+
+Finally, the physical layout view previously relied on an inconsistent collection of PNG icons. These were replaced with a cohesive set of coloured isometric graphics, making physical equipment easier to recognize at a glance. This also created a stronger visual distinction between physical elements in the layout view and logical process nodes, helping users understand which parts of the model represented real-world equipment and which represented workflow logic.
 
 ### Process View Refinements
 
 Earlier versions of the process editor contained a large number of similar-looking blocks and connections, which created visual complexity.
-
-I proposed removing the “Link” block entirely and replacing it with a smaller tab-based interface for displaying connections. This simplified the diagram and reduced the number of elements users needed to manage.
 
 User testing also revealed that users wanted to reorganize large diagrams more easily. I helped introduce multi-select functionality, allowing multiple nodes to be moved simultaneously. Working with the UX team, we defined mouse and keyboard interactions that felt natural to technical users, including drag-based selection using the left mouse button.
 
