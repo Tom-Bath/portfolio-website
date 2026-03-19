@@ -1,7 +1,7 @@
 ---
 title: Warehouse Flow Modeling Tool
 subtitle: Improving the usability of a logistics simulation interface.
-heroImage: "src/content/case-studies/processview.svg"
+heroImage: "portfolio-website/case-studies/processview.svg"
 ---
 
 ## Overview

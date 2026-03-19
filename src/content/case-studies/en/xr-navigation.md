@@ -62,49 +62,43 @@ To ground the project, I analyzed the 2026 XR landscape—specifically the shift
 ## Design Process and Solutions
 
 The application presented three distinct spatial layers simultaneously: 
+
+Designing for a moving vehicle required managing three distinct layers of depth.
+
 - World-locked elements placed at real geographic coordinates via ArcGIS (turn indicators, POIs, route overlays)
 - Vehicle-fixed elements anchored to the interior regardless of heading (speedometer, minimap)
 - The actual physical environment itself
 
-Designing across these 3 layers meant managing depth, visual weight, and occlusion in a context where most existing UI conventions do not apply. Additionally, the UI would effectively be limiting the field of view for the user which could impact safety while driving. 
-> The app was only ever used for passengers in the end due to this safety concern.
+The primary challenge was balancing spatial accuracy (proving the tech works) with situational awareness (keeping the passenger safe).
 
-While desiging, I always had to consider ways to mitigate motion sickness caused by sensor drift or jitter. I focused on large UI elements which minimized sustained gaze and would reduce the impact of jitter.
+As part of my design process, I wanted to avoid users experiencing motion sickness caused by sensor jitter. I avoided small, detailed text and opted for **large-scale, high-contrast geometry**. This reduced the need for "sustained gaze" - allowing users to process information via peripheral vision without focusing on micro-stutters in the tracking.
 
-### Designing 3D World-Locked Assets
+1. 3D World-Locked Assets
+I designed these assets to prove that the ArcGIS spatial anchoring remained stable at speed. I used large, bold shapes that are easier to process quickly.
 
-The geographically positioned UI assets could demonstrate demonstrate both the accuracy of the spatial anchoring (via ArcGIS) and the visual quality achievable while moving.
+- Arrival Gates: Large, opaque 3D frames placed at car park entrances. Because they were solid and aligned with real-world structures, they felt grounded and stable.
+- Waypoints: Semi-transparent markers at intersections. These allowed the user to see through them to spot oncoming traffic or pedestrians.
+- Route Overlays: We ultimately cut these. The GPS data wasn't accurate enough to make the lines "hug" the curves of the road perfectly, and a jittery line on the ground felt low-quality.
 
-I considered the following concepts:
-- **Route Overlays:** Digital paths mapped directly onto the road surface.
-- **Lane Assists:** Visual cues to help with positioning and turns.
-- **Waypoints:** Clear markers for specific geographic points of interest.
-- **Arrival Gates:** 3D "finish lines" or virtual barriers that a user drives through to signal reaching a destination.
-- **Hazard Markers:** Stable, persistent icons for landmarks or road obstacles.
-- **Text prompts:** In-space text guidance for directions
+**Key Finding:** While transparent markers are safer, they can feel "ghostly." Placing markers high in the air keeps the road clear but makes it harder to tell exactly which street the marker is floating over.
 
-[Add images]
+2. 2D In-Car Dashboard
+While the 3D assets lived "outside," these 2D elements were pinned to the car's interior to show that a digital speedometer and minimap could look as stable as a physical screen.
 
-Design decisions here focused on **legibility at distance and in motion**: 
+The Perspective Challenge: We optimized the UI layout for a typical adult height. However, testing revealed that for shorter users, these "oversized" elements blocked too much of the windshield. This reinforced our decision to pivot the app toward a passenger experience rather than a driver-facing one.
 
-To test which elements worked best, I (with the help of my team) designed and modelled various elements in different scales, opacities, and colour contrasts. 
+Legibility & Contrast: I directed the UI production with a focus on high-contrast fonts and bold weights. Because lighting changed constantly (tunnels, direct sun), a thinner UI would have been unreadable.
 
-The final application consisted of:
-- **Opaque, large physical arrival gates**
-- **Transparent waypoint markers at intersections** 
-
-The gates were placed at fixed locations in a car park, and the waypoints were placed along the road. While I found in testing that transparent objects were always better for usability (being able to always see the world around is better than blocking line of sight), having exclusively transparent objects meant the clients could not easily see the high quality precision of geographically-placed assets. The use of large, physical gates at the carpark entrance meant that the gate functionally did not obscure so much visual information - there was already some real-world gate in the same position!
-
-Transparent waypoint markers...
-
-### 2D In-Car Dashboard Assets
-
-<!-- [todo] -->
+Live Data: The minimap was integrated with a live data feed to provide real-time context that matched the 3D world-space.
 
 ---
 
 ## Reflection
 
-<!-- [todo] -->
+*[INFO NEEDED: Your own take on this would be strongest here. Some prompts:]*
+- *What would you do differently if you started this project again?*
+- *What were you most satisfied with in the final outcome?*
+- *Were there design or technical compromises that frustrated you?*
+- *How did directing interns change your approach compared to solo projects?*
 
 > Due to NDA constraints, detailed screenshots and metrics cannot be publicly shared. All sketches contain minor semantic differences to the real UX design. 
