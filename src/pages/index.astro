@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 
+import processviewsmall from "../content/case-studies/processviewsmall.svg";
+import virtualscene from "../content/case-studies/virtualscene.png";
+
 import {
   Card,
   CardTitle,
@@ -42,8 +45,8 @@ import {
           <Card class="hover:shadow-lg">
             <img
               class="h-72 w-full object-cover"
-              src="portfolio-website/case-studies/processviewsmall.svg"
-              alt="Placeholder image"
+              src={processviewsmall.src}
+              alt="Kaizen Layout App"
             />
             <CardHeader>
               <CardTitle>Kaizen Layout App</CardTitle>
@@ -67,7 +70,7 @@ import {
           <Card class="hover:shadow-lg">
             <img
               class="h-72 w-full object-cover"
-              src="portfolio-website/case-studies/virtualscene.png"
+              src={virtualscene.src}
               alt="XR Navigation"
             />
             <CardHeader>
