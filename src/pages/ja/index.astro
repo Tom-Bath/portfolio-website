@@ -1,6 +1,9 @@
 ---
 import "../../styles/global.css";
 
+import processviewsmall from "../../content/case-studies/processviewsmall.svg";
+import virtualscene from "../../content/case-studies/virtualsceneweb.png";
+
 import {
   Card,
   CardTitle,
@@ -9,75 +12,279 @@ import {
   CardContent,
 } from "@/components/ui/card";
 
-const base = import.meta.env.BASE_URL;
+// Generate 18 blob keyframe animations (replaces the SCSS @for loop in back.css)
+const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
+  const i = idx + 1;
+  const a = i * 90;
+  const b = i * 90 + 360;
+  return `.blob:nth-child(${i}){animation:move${i} 20s infinite linear;}@keyframes move${i}{from{transform:rotate(${a}deg) translate(200px,0.1px) rotate(-${a}deg);}to{transform:rotate(${b}deg) translate(200px,0.1px) rotate(-${b}deg);}}`;
+}).join("");
 ---
 
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tom Bath - UXポートフォリオ</title>
+    <title>Tom Bath - UX Portfolio</title>
+    <Fragment set:html={`<style>${blobAnimationCSS}</style>`} />
   </head>
   <body class="bg-background text-foreground">
     <a
-      href={`${base}/`}
+      href={`${import.meta.env.BASE_URL}/`}
       class="fixed top-4 right-4 z-50 px-3 py-1.5 text-sm font-medium border border-border rounded-md bg-background hover:bg-muted/40 transition-colors"
     >
       English
     </a>
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <!-- Hero / intro -->
-      <section class="mb-8 text-center">
-        <h1 class="text-8xl font-bold mb-4 font-bebas">Tom Bath</h1>
-        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-          インタラクションデザイン・空間コンピューティング・複雑系を探求するUXエンジニア。
-        </p>
-      </section>
 
-      <!-- Case studies -->
-      <section class="grid gap-8 grid-cols-1 md:grid-cols-3">
+    <!-- Full-screen hero with animated blob background -->
+    <section class="blob-hero">
+      <svg
+        class="blob-hero__svg"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <!-- Gooey filter: Gaussian blur + alpha threshold creates merged blob shapes -->
+          <filter id="gooey" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
+          </filter>
+
+          <!--
+            Blob mask: same animated circles in white.
+            maskUnits="userSpaceOnUse" so coordinates match the full SVG viewport,
+            allowing the purple text to align exactly with the yellow blobs below.
+          -->
+          <mask
+            id="blobMask"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+          >
+            <g filter="url(#gooey)">
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" />
+              <circle class="blob" cx="50%" cy="10%" r="40" fill="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" />
+              <circle class="blob" cx="90%" cy="20%" r="120" fill="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" />
+              <circle class="blob" cx="50%" cy="60%" r="80" fill="white" />
+              <circle class="blob" cx="70%" cy="90%" r="10" fill="white" />
+              <circle class="blob" cx="90%" cy="60%" r="90" fill="white" />
+              <circle class="blob" cx="30%" cy="90%" r="80" fill="white" />
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" />
+              <circle class="blob" cx="50%" cy="10%" r="20" fill="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" />
+              <circle class="blob" cx="40%" cy="20%" r="120" fill="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" />
+              <circle class="blob" cx="80%" cy="60%" r="80" fill="white" />
+              <circle class="blob" cx="17%" cy="10%" r="100" fill="white" />
+              <circle class="blob" cx="40%" cy="60%" r="90" fill="white" />
+              <circle class="blob" cx="10%" cy="50%" r="80" fill="white" />
+            </g>
+          </mask>
+        </defs>
+
+        <!-- Dark gooey blobs -->
+        <g filter="url(#gooey)">
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="10%" r="40" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="90%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="70%" cy="90%" r="10" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="90%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="90%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="10%" r="20" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="40%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="80%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="10%" r="100" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="40%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="10%" cy="50%" r="80" fill="oklch(0.141 0.005 285.823)" />
+        </g>
+
+        <!-- Dark title: always visible (shows on light background) -->
+        <text
+          x="50%"
+          y="4%"
+          text-anchor="middle"
+          dominant-baseline="hanging"
+          class="blob-hero__title"
+          fill="oklch(0.141 0.005 285.823)"
+        >TOM BATH</text>
+
+        <!-- Light title: only revealed where blobs pass over the text -->
+        <text
+          x="50%"
+          y="4%"
+          text-anchor="middle"
+          dominant-baseline="hanging"
+          class="blob-hero__title"
+          fill="oklch(0.97 0 0)"
+          mask="url(#blobMask)"
+        >TOM BATH</text>
+      </svg>
+
+      <div class="blob-hero__pills">
+        <p class="blob-hero__subtitle">
+          インタラクションデザイン、空間コンピューティング、複雑なシステムを探求するUXエンジニア
+        </p>
+        <a href={`${import.meta.env.BASE_URL}/ja/contact`} class="blob-hero__contact">
+          お問い合わせ
+        </a>
+      </div>
+
+      <div class="blob-hero__content">
+        <!-- Case studies -->
+        <section class="grid gap-8 grid-cols-1 md:grid-cols-2 w-full mt-12">
         <!-- Kaizen Layout App -->
         <a
-          href={`${base}/ja/warehouse-flow`}
+          href={`${import.meta.env.BASE_URL}/ja/warehouse-flow`}
           class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
           <Card class="hover:shadow-lg">
             <img
               class="h-72 w-full object-cover"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
-              alt="Placeholder image"
+              src={processviewsmall.src}
+              alt="倉庫フローモデリングツール"
             />
             <CardHeader>
-              <CardTitle>倉庫レイアウトアプリ</CardTitle>
-              <CardDescription> （準備中） </CardDescription>
+              <CardTitle>倉庫フローモデリングツール</CardTitle>
+              <CardDescription>
+                物流シミュレーションインターフェースのユーザビリティ改善
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p class="text-sm text-muted-foreground">（準備中）</p>
+              <p class="text-sm text-muted-foreground">
+                産業用レイアウトツールをヒントに設計した、シミュレーション基盤のモデリングプラットフォーム
+              </p>
             </CardContent>
           </Card>
         </a>
 
         <!-- XR Navigation -->
         <a
-          href={`${base}/ja/xr-navigation`}
+          href={`${import.meta.env.BASE_URL}/ja/xr-navigation`}
           class="no-underline block transform transition-transform duration-300 md:hover:scale-105"
         >
           <Card class="hover:shadow-lg">
             <img
               class="h-72 w-full object-cover"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='system-ui' font-size='24'%3EImage%3C/text%3E%3C/svg%3E"
-              alt="Placeholder image"
+              src={virtualscene.src}
+              alt="XRナビゲーション"
             />
             <CardHeader>
               <CardTitle>XRナビゲーション</CardTitle>
-              <CardDescription> （準備中） </CardDescription>
+              <CardDescription>
+                拡張現実環境における空間ナビゲーションのデザイン
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p class="text-sm text-muted-foreground">（準備中）</p>
+              <p class="text-sm text-muted-foreground">
+                走行中の車両内でIMUセンサーフュージョン技術を活用したXRナビゲーションアプリ
+              </p>
             </CardContent>
           </Card>
         </a>
-      </section>
-    </main>
+        </section>
+      </div>
+    </section>
   </body>
 </html>
+
+<style is:global>
+  .blob-hero {
+    position: relative;
+    background-color: oklch(0.97 0 0);
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 4rem;
+  }
+
+  .blob-hero__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 72rem;
+    /* push cards below the absolute title + subtitle at all viewport widths */
+    padding: calc(4% + clamp(3rem, 22vw, 12rem) + 3.5rem) 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .blob-hero__content {
+      padding-top: calc(4% + clamp(3rem, 22vw, 12rem) + 2.25rem);
+    }
+  }
+
+  .blob-hero__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .blob-hero__title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3rem, 22vw, 12rem);
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+
+  .blob-hero__pills {
+    position: absolute;
+    top: calc(4% + clamp(3rem, 22vw, 12rem) + 0.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: max-content;
+    max-width: calc(100vw - 3rem);
+  }
+
+  .blob-hero__subtitle {
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.141 0.005 285.823);
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .blob-hero__contact {
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.6 0.26 0);
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .blob-hero__contact:hover {
+    background-color: oklch(0.65 0.28 0);
+  }
+</style>

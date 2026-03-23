@@ -1,7 +1,7 @@
 ---
 title: XR Navigation
 subtitle: Designing spatial navigation for extended reality environments.
-heroImage: "/portfolio-website/case-studies/virtualscene.png"
+heroImage: "/portfolio-website/case-studies/virtualsceneweb.png"
 challenge: "The technology is powerful but invisible - a compelling interactive demo was needed to convert B2B clients."
 role: "Concept, UX Design, Unity Development, Intern Mentoring"
 duration: ""
