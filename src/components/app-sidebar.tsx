@@ -45,7 +45,6 @@ export function AppSidebar({ locale = "en", base = "/portfolio-website", ...prop
       items: [
         { title: t(locale, "warehouseFlow"), url: `${prefix}/warehouse-flow` },
         { title: t(locale, "xrNav"), url: `${prefix}/xr-navigation` },
-        { title: t(locale, "mapsRoute"), url: `${prefix}/maps-route-planner` },
       ],
     },
   ]

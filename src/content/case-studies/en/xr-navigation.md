@@ -2,12 +2,10 @@
 title: XR Navigation
 subtitle: Designing spatial navigation for extended reality environments.
 heroImage: "/portfolio-website/case-studies/virtualscene.png"
-challenge: "The technology is powerful but invisible — a compelling interactive demo was needed to convert B2B clients."
+challenge: "The technology is powerful but invisible - a compelling interactive demo was needed to convert B2B clients."
 role: "Concept, UX Design, Unity Development, Intern Mentoring"
 duration: ""
 ---
-
-> \*The hero image is a stylized reimagining due to non-disclosure agreements
 
 ## Overview
 
@@ -26,36 +24,44 @@ A navigation app was chosen as the example application, because it could showcas
 - Visual elements placed in the world at specific longitude-latitude coordinates
 - Visual elements placed inside the car in a fixed location on the dashboard
 
----
-
-## Problem
-
-The company sells both IMU sensors and fusion technology. The tech is powerful but invisible — and raw data alone wasn't enough to convert B2B clients. The business needed a way to prove precision through experience rather than specification.
-
-**The core insight was that I wasn't designing for a driver — I was designing for a client evaluating whether to buy into the technology.** This added complexity to many of the design decisions - the goal wasn't a polished consumer navigation app, it was a demonstration that let clients map their own use cases onto what they were seeing.
-
-To achieve that, I built around a fictional end-user navigating a city — a relatable context that kept the demo grounded while still showcasing both world-fixed and vehicle-fixed spatial anchoring.
+The demo scenario follows a fictional passenger navigating a city - a relatable stand-in for real end-users that gives prospective clients a concrete context to map their own use cases onto.
 
 ---
 
-## Research and Insights
+## Research and Problem Definition
+
+### Problem
+
+The company sells both IMU sensors and fusion technology. The tech is powerful but invisible - and raw data alone wasn't enough to convert B2B clients. The business needed a way to prove precision through experience rather than specification.
+
+**The core insight was that I wasn't designing for a driver - I was designing for a client evaluating whether to buy into the technology.** This added complexity to many of the design decisions - the goal wasn't a polished consumer navigation app, it was a demonstration that let clients map their own use cases onto what they were seeing.
+
+To achieve that, I built around a fictional end-user navigating a city - a relatable context that kept the demo grounded while still showcasing both world-fixed and vehicle-fixed spatial anchoring.
+
+---
+
+### Research and Insights
 
 At the start of the project, I analyzed the XR landscape - specifically the shift from static HUDs to conformal AR (graphics that sit accurately on the road).
 
 - Companies like Audi and Mercedes-Benz have launched high-end AR HUDs, but these are hardware-locked to specific vehicle models.
 
-<figure>
-  <img src="/portfolio-website/case-studies/audi.png" alt="Audi AR HUD example" class="w-full h-auto" />
-  <figcaption class="text-sm text-muted-foreground mt-2">Image Credit: Motortrend</figcaption>
-</figure>
-
 - Mobile AR frameworks like ARKit/ARCore rely heavily on **visual-inertial odometry (VIO)**. In moving environments, they suffer from accumulated drift and high latency in "large-scale dynamic environments" (like a car moving at high speeds) without external sensor fusion. The system I was designing for would mostly avoid this issue but it was still possible to occur.
 
-- Technical Constraints: While AR glasses have improved a lot in recent years — both in field of view and rendering quality — there are still real limits to design around. The narrow FOV means critical UI needs to stay central, and small text or fine detail can be hard to read reliably, so I kept the interface simple and high-contrast throughout.
+- Technical Constraints: While AR glasses have improved a lot in recent years - both in field of view and rendering quality - there are still real limits to design around. The narrow FOV means critical UI needs to stay central, and small text or fine detail can be hard to read reliably.
+
+Due to our hardware constraints, it seemed neccessary to keep the interface simple and high-contrast - not just as a stylistic choice, but as a requirement for legibility under real-world conditions.
+
+<figure>
+  <img src="/portfolio-website/case-studies/audi.png" alt="Audi AR HUD example" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">An example of the kind of work being done by Audi</figcaption>
+</figure>
 
 ---
 
-## Design Strategy
+## Design Process and Solutions
+
+### Design Strategy
 
 Designing for a moving vehicle required synchronized management of three distinct spatial depths:
 
@@ -67,29 +73,25 @@ Based on research and initial testing, I tried to design with these principles:
 
 - Focus on high-contrast, large-scale shapes and typography. This mitigated the "micro-jitter" common in sensor fusion and reduced motion sickness.
 - Positioning all UX within the windshield’s peripheral area. This optimized tracking stability and kept the user’s gaze aligned with the vehicle's direction.
-- Designing for a large percentile of end-users. Intial testing confirmed that some UI elements obstructed the field of view for shorter users.
+- Designing for a large percentile of end-users. Initial testing confirmed that some UI elements obstructed the field of view for shorter users.
 
-> Due to safety concerns, we pivoted the UX from a 'Driver Experience' to a 'Passenger Experience' early in the project. 
-
----
-
-## Solutions
+**Note:** Due to safety concerns identified during early testing, we pivoted the UX from a driver experience to a passenger experience. This shaped every subsequent decision about UI placement and interaction model.
 
 ### 3D World-Locked Assets
 
-I designed these assets to prove that the ArcGIS spatial anchoring remained stable at speed, using large, bold shapes that are easier to process quickly.
+World-locked assets are virtual objects anchored to specific GPS coordinates - they appear to sit in the physical environment and stay in place as the vehicle moves around them. In order to show to clients the power of the IMU fusion technology, the priority was showing that these objects remained precisely positioned at speed, without drifting or snapping.
 
 - Arrival Gates: Large, opaque 3D frames placed at car park entrances. Because they were solid and aligned with real-world structures, they felt grounded and stable.
 
 - Waypoints: Semi-transparent markers at intersections. These allowed the user to see through them to spot oncoming traffic or pedestrians. The arrows had to be tilted up slightly towards the user so they could be seen while approaching, but not block the users view of the road entirely.
 
-> **Route Overlays** and **Overhead Text** were dropped from the final solution. Intially testing showed these features had potential, but the ARCGIS route data wasn't high-fidelity enough to make the lines "hug" the curves of the road perfectly; a jittery line on the ground felt low-quality. Additionally, sizing the overhead text was challenging as they either took up too much visual space, or the fonts were too small to read.
+> **Route Overlays** and **Overhead Text** were dropped from the final solution. Initially testing showed these features had potential, but the ArcGIS route data wasn't high-fidelity enough to make the lines "hug" the curves of the road perfectly; a jittery line on the ground felt low-quality. Additionally, sizing the overhead text was challenging as they either took up too much visual space, or the fonts were too small to read.
 
 **Key Finding:** With the world outside the car having a lot of visual information already, it very much felt "Less is More" in terms of UX. Early versions of the app felt overwhelming with visual cues and information, so the final result had a limited number of waypoints and gates.
 
 ### 2D In-Car Dashboard
 
-While the 3D assets lived "outside," these 2D elements were pinned to the car's interior to show that a digital speedometer and minimap could look as stable as a physical screen.
+These elements sit inside the car rather than out in the world - pinned to the vehicle's interior regardless of where it's driving. The goal was to show that a virtual speedometer and minimap could feel as stable and readable as a physical screen, even with constant vehicle movement.
 
 - Legibility & Contrast: I directed the UI production with a focus on high-contrast fonts and bold weights. Because lighting changed constantly (tunnels, direct sun), a thinner UI would have been unreadable.
 
@@ -103,14 +105,14 @@ While the 3D assets lived "outside," these 2D elements were pinned to the car's 
 
 ---
 
-## Reflection & Retrospective
+## Reflection
 
 Ultimately, the project succeeded in its primary goal: making invisible technology visible. By creating a tangible bridge between raw IMU data and a functional user experience, we provided clients with a canvas to project their own business solutions. The demo was successfully shown to a prospective business who became a key client.
 
-If I did the project again, I’d prioritize showing off the buyer-specific data visualizations more (like low-latency data precision) to more directly encourage business sales. While the app concept is relatable, the high precision of objects outside the car wasn't so clear to end users.
+In retrospect, I would prioritize showing off the buyer-specific data visualizations more (like low-latency data precision) to more directly encourage business sales. While the app concept is relatable, the high precision of objects outside the car wasn't so clear to end users.
 
 Testing showed the dashboard elements were functional, but with further user testing I believe they could have been made smaller to make room for additional UX components like interactive media controls.
 
 Leading this project end-to-end taught me that ownership requires a different kind of communication. Writing clear success criteria for interns and giving structured feedback were skills I had to develop deliberately. I learned that ambiguity in a brief costs more time than it saves, and that clear constraints give junior contributors more creative confidence, not less.
 
-> Note: Due to NDA constraints, sketches shown contain minor semantic differences from the final production UX.
+> Diagrams and sketches shown are illustrative and not representative of the final product.

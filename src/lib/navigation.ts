@@ -30,10 +30,6 @@ export const navigationStructure = {
           title: "XR Nav",
           url: "/portfolio-website/xr-navigation",
         },
-        {
-          title: "Maps Route",
-          url: "/portfolio-website/maps-route-planner",
-        },
       ],
     },
   ],
