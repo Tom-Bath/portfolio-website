@@ -1,7 +1,10 @@
 ---
 title: XR Navigation
 subtitle: Designing spatial navigation for extended reality environments.
-heroImage: "src/content/case-studies/virtualscene.png"
+heroImage: "/portfolio-website/case-studies/virtualscene.png"
+challenge: "The technology is powerful but invisible — a compelling interactive demo was needed to convert B2B clients."
+role: "Concept, UX Design, Unity Development, Intern Mentoring"
+duration: ""
 ---
 
 > \*The hero image is a stylized reimagining due to non-disclosure agreements
@@ -12,7 +15,11 @@ This project centred on designing and developing a concept XR navigation applica
 
 The technology combines data from a vehicle-mounted IMU device, a vehicle-mounted GNSS antenna, and a XR headset IMU. Together, the output pose is accurate enough to render virtual objects with high precision in the real world while inside a moving vehicle. This capability has previously been demonstrated through real-car VR racing experiences.
 
-![Diagram of the sensor fusion system inside a vehicle](src/content/case-studies/cardiagramblue.png)
+<figure>
+  <img src="/portfolio-website/case-studies/cardiagramblue.png" alt="Diagram of the sensor fusion system inside a vehicle" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Diagram of the sensor fusion system inside a vehicle</figcaption>
+</figure>
+
 
 A navigation app was chosen as the example application, because it could showcase both:
 
@@ -31,29 +38,16 @@ To achieve that, I built around a fictional end-user navigating a city — a rel
 
 ---
 
-## My Role
-
-I was responsible for the project from start to finish — concept, design, and implementation. I had to negotiate with leadership about what features were most important based on what the customers wanted to see from the demonstrations.
-
-My contributions included:
-
-- Coming up with the navigation app concept as a way to demonstrate the technology
-- Making all UX decisions across the world-space and in-car interface layers
-- Mentoring interns on asset production, giving briefs, reviewing their work, and signing off on quality
-- Coordinating how ArcGIS geospatial data was brought into the 3D scene
-- Implementing the UI in Unity so it rendered correctly in the XR environment
-
----
-
 ## Research and Insights
 
 At the start of the project, I analyzed the XR landscape - specifically the shift from static HUDs to conformal AR (graphics that sit accurately on the road).
 
 - Companies like Audi and Mercedes-Benz have launched high-end AR HUDs, but these are hardware-locked to specific vehicle models.
 
-![Audi AR HUD example](src/content/case-studies/audi.png)
-
-> Image Credit: Motortrend https://www.motortrend.com/features/audi-augmented-reality-best-tech-2026/photos
+<figure>
+  <img src="/portfolio-website/case-studies/audi.png" alt="Audi AR HUD example" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Image Credit: Motortrend</figcaption>
+</figure>
 
 - Mobile AR frameworks like ARKit/ARCore rely heavily on **visual-inertial odometry (VIO)**. In moving environments, they suffer from accumulated drift and high latency in "large-scale dynamic environments" (like a car moving at high speeds) without external sensor fusion. The system I was designing for would mostly avoid this issue but it was still possible to occur.
 
