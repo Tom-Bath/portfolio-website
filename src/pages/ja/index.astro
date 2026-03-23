@@ -161,12 +161,18 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
             <CardHeader>
               <CardTitle>倉庫フローモデリングツール</CardTitle>
               <CardDescription>
-                物流シミュレーションインターフェースのユーザビリティ改善
+                <div class="card-pills">
+                  <span class="card-pill">2D</span>
+                  <span class="card-pill">デザイン</span>
+                  <span class="card-pill">ワイヤーフレーム</span>
+                  <span class="card-pill">インタラクションデザイン</span>
+                  <span class="card-pill">ユーザーテスト</span>
+                </div>
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                産業用レイアウトツールをヒントに設計した、シミュレーション基盤のモデリングプラットフォーム
+                Unityシミュレーションエンジンと連携するウェブベースのモデリングツール。ユーザーテストで明らかになった課題をもとに、プロセスフローとレイアウト編集のインタラクション設計を改善した。
               </p>
             </CardContent>
           </Card>
@@ -186,12 +192,18 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
             <CardHeader>
               <CardTitle>XRナビゲーション</CardTitle>
               <CardDescription>
-                拡張現実環境における空間ナビゲーションのデザイン
+                <div class="card-pills">
+                  <span class="card-pill">XR</span>
+                  <span class="card-pill">デザイン</span>
+                  <span class="card-pill">コンセプト</span>
+                  <span class="card-pill">拡張現実</span>
+                  <span class="card-pill">ユーザーテスト</span>
+                </div>
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                走行中の車両内でIMUセンサーフュージョン技術を活用したXRナビゲーションアプリ
+                独自のIMUセンサーフュージョン技術をB2Bクライアントに体験として伝えるためのコンセプトXRナビゲーションアプリ。走行中の車内で、世界固定と車両固定の両方のAR要素を実証した。
               </p>
             </CardContent>
           </Card>
@@ -286,5 +298,23 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
 
   .blob-hero__contact:hover {
     background-color: oklch(0.65 0.28 0);
+  }
+
+  .card-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.25rem;
+  }
+
+  .card-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.6 0.26 0);
+    line-height: 1.5;
   }
 </style>

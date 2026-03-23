@@ -141,7 +141,7 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
           complex systems.
         </p>
         <a href={`${import.meta.env.BASE_URL}/contact`} class="blob-hero__contact">
-          Contact me
+          Contact me!
         </a>
       </div>
 
@@ -162,13 +162,18 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
             <CardHeader>
               <CardTitle>Kaizen Layout App</CardTitle>
               <CardDescription>
-                Concept product inspired by industrial layout tools.
+                <div class="card-pills">
+                  <span class="card-pill">2D</span>
+                  <span class="card-pill">Design</span>
+                  <span class="card-pill">Wireframes</span>
+                  <span class="card-pill">Interaction Design</span>
+                  <span class="card-pill">User Testing</span>
+                </div>
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                Wireframes, concept sketches, and interaction flows for a
-                canvas-based layout application.
+                A web-based process flow and 2D layout modeling tool backed by a Unity simulation engine — user testing surfaced key usability gaps that drove targeted interaction design improvements.
               </p>
             </CardContent>
           </Card>
@@ -188,13 +193,18 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
             <CardHeader>
               <CardTitle>XR Navigation</CardTitle>
               <CardDescription>
-                Spatial navigation UX built during my work at ABC123.
+                <div class="card-pills">
+                  <span class="card-pill">XR</span>
+                  <span class="card-pill">Design</span>
+                  <span class="card-pill">Concept</span>
+                  <span class="card-pill">Augmented Reality</span>
+                  <span class="card-pill">User Testing</span>
+                </div>
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p class="text-sm text-muted-foreground">
-                Designing spatial navigation patterns for augmented reality
-                environments.
+                A concept XR navigation app built to demonstrate proprietary IMU sensor fusion technology to B2B clients, placing AR elements both world-fixed and vehicle-fixed inside a moving car.
               </p>
             </CardContent>
           </Card>
@@ -289,5 +299,23 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
 
   .blob-hero__contact:hover {
     background-color: oklch(0.65 0.28 0);
+  }
+
+  .card-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.25rem;
+  }
+
+  .card-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.6 0.26 0);
+    line-height: 1.5;
   }
 </style>
