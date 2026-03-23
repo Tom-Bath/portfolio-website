@@ -11,6 +11,14 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+
+// Generate 18 blob keyframe animations (replaces the SCSS @for loop in back.css)
+const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
+  const i = idx + 1;
+  const a = i * 90;
+  const b = i * 90 + 360;
+  return `.blob:nth-child(${i}){animation:move${i} 20s infinite linear;}@keyframes move${i}{from{transform:rotate(${a}deg) translate(200px,0.1px) rotate(-${a}deg);}to{transform:rotate(${b}deg) translate(200px,0.1px) rotate(-${b}deg);}}`;
+}).join("");
 ---
 
 <html lang="en">
@@ -18,6 +26,7 @@ import {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tom Bath - UX Portfolio</title>
+    <Fragment set:html={`<style>${blobAnimationCSS}</style>`} />
   </head>
   <body class="bg-background text-foreground">
     <a
@@ -26,18 +35,119 @@ import {
     >
       日本語
     </a>
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <!-- Hero / intro -->
-      <section class="mb-8 text-center">
-        <h1 class="text-8xl font-bold mb-4 font-bebas">Tom Bath</h1>
-        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+
+    <!-- Full-screen hero with animated blob background -->
+    <section class="blob-hero">
+      <svg
+        class="blob-hero__svg"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <!-- Gooey filter: Gaussian blur + alpha threshold creates merged blob shapes -->
+          <filter id="gooey" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
+          </filter>
+
+          <!--
+            Blob mask: same animated circles in white.
+            maskUnits="userSpaceOnUse" so coordinates match the full SVG viewport,
+            allowing the purple text to align exactly with the yellow blobs below.
+          -->
+          <mask
+            id="blobMask"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+          >
+            <g filter="url(#gooey)">
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" />
+              <circle class="blob" cx="50%" cy="10%" r="40" fill="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" />
+              <circle class="blob" cx="90%" cy="20%" r="120" fill="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" />
+              <circle class="blob" cx="50%" cy="60%" r="80" fill="white" />
+              <circle class="blob" cx="70%" cy="90%" r="10" fill="white" />
+              <circle class="blob" cx="90%" cy="60%" r="90" fill="white" />
+              <circle class="blob" cx="30%" cy="90%" r="80" fill="white" />
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" />
+              <circle class="blob" cx="50%" cy="10%" r="20" fill="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" />
+              <circle class="blob" cx="40%" cy="20%" r="120" fill="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" />
+              <circle class="blob" cx="80%" cy="60%" r="80" fill="white" />
+              <circle class="blob" cx="17%" cy="10%" r="100" fill="white" />
+              <circle class="blob" cx="40%" cy="60%" r="90" fill="white" />
+              <circle class="blob" cx="10%" cy="50%" r="80" fill="white" />
+            </g>
+          </mask>
+        </defs>
+
+        <!-- Dark gooey blobs -->
+        <g filter="url(#gooey)">
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="10%" r="40" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="90%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="70%" cy="90%" r="10" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="90%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="90%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="50%" cy="10%" r="20" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="40%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="80%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="17%" cy="10%" r="100" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="40%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="10%" cy="50%" r="80" fill="oklch(0.141 0.005 285.823)" />
+        </g>
+
+        <!-- Dark title: always visible (shows on light background) -->
+        <text
+          x="50%"
+          y="4%"
+          text-anchor="middle"
+          dominant-baseline="hanging"
+          class="blob-hero__title"
+          fill="oklch(0.141 0.005 285.823)"
+        >TOM BATH</text>
+
+        <!-- Light title: only revealed where blobs pass over the text -->
+        <text
+          x="50%"
+          y="4%"
+          text-anchor="middle"
+          dominant-baseline="hanging"
+          class="blob-hero__title"
+          fill="oklch(0.97 0 0)"
+          mask="url(#blobMask)"
+        >TOM BATH</text>
+      </svg>
+
+      <div class="blob-hero__pills">
+        <p class="blob-hero__subtitle">
           UX engineer exploring interaction design, spatial computing, and
           complex systems.
         </p>
-      </section>
+        <a href={`${import.meta.env.BASE_URL}/contact`} class="blob-hero__contact">
+          Contact me
+        </a>
+      </div>
 
-      <!-- Case studies -->
-      <section class="grid gap-8 grid-cols-1 md:grid-cols-3">
+      <div class="blob-hero__content">
+        <!-- Case studies -->
+        <section class="grid gap-8 grid-cols-1 md:grid-cols-2 w-full mt-12">
         <!-- Kaizen Layout App -->
         <a
           href={`${import.meta.env.BASE_URL}/warehouse-flow`}
@@ -89,7 +199,95 @@ import {
             </CardContent>
           </Card>
         </a>
-      </section>
-    </main>
+        </section>
+      </div>
+    </section>
   </body>
 </html>
+
+<style is:global>
+  .blob-hero {
+    position: relative;
+    background-color: oklch(0.97 0 0);
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 4rem;
+  }
+
+  .blob-hero__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 72rem;
+    /* push cards below the absolute title + subtitle at all viewport widths */
+    padding: calc(4% + clamp(3rem, 22vw, 12rem) + 3.5rem) 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .blob-hero__content {
+      padding-top: calc(4% + clamp(3rem, 22vw, 12rem) + 2.25rem);
+    }
+  }
+
+  .blob-hero__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .blob-hero__title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3rem, 22vw, 12rem);
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+
+  .blob-hero__pills {
+    position: absolute;
+    top: calc(4% + clamp(3rem, 22vw, 12rem) + 0.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: max-content;
+    max-width: calc(100vw - 3rem);
+  }
+
+  .blob-hero__subtitle {
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.141 0.005 285.823);
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .blob-hero__contact {
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.6 0.26 0);
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .blob-hero__contact:hover {
+    background-color: oklch(0.65 0.28 0);
+  }
+</style>
