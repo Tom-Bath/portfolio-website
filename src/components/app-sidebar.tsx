@@ -73,7 +73,7 @@ export function AppSidebar({ locale = "en", base = "/portfolio-website", ...prop
       <SidebarFooter>
         <a
           href={altUrl}
-          className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium border border-border rounded-md hover:bg-muted/40 transition-colors"
+          className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium border border-border rounded-full hover:bg-muted/40 transition-colors"
         >
           {t(locale, "switchLang")}
         </a>

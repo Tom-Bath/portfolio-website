@@ -1,0 +1,41 @@
+Tom Bath
+Tokyo, Japan • 090 4864 3875 • tom.bath.connect@gmail.com • https://www.linkedin.com/in/tom-bath/ 
+
+Experienced software engineer with JLPT N3 and based in Tokyo. Experience building real-time software systems, integrating streaming data and APIs across sensors, devices, and simulations.
+
+
+Woven by Toyota, Tokyo, Japan	Sept 2025 – Present (Contractor)
+Simulation Software Engineer
+Key Technologies: Unity, C#, TypeScript, React, Protobuf
+Key Feature Enhancements: Built and delivered a  vehicle logistics modelling simulation so users could simulate their complete warehouse operations (Kaizen). This evolved the project from a prototype to a MVP that enabled users to identify distribution hub bottlenecks.
+Validation Systems: Engineered a validation tool for agent behaviors and warehouse layouts, eliminating developer errors and minimizing debugging time. The tool became a key end-user feature, providing instant layout verification without needing to run time-consuming and expensive simulations.
+UX Test Documentation: Produced user enablement documentation that reduced developer support during testing from 5 team members to 1, freeing significant development capacity.
+Quality Improvements: Refined the simulation to eliminate float errors and resolve mistimed events, ensuring deterministic outcomes and enabling end-users to compare layouts with precision. Regularly maintained React UX components which helped keep the UI bug free.
+LP-Research, Tokyo, Japan	Sept 2024 – August 2025
+Senior Software Engineer
+Key Technologies: Unity, C#, TypeScript, Vue, Rust, Python, MQTT, ZeroMQ, Protobuf
+In-Car XR Navigation Demo: Led the design and development of an XR navigation demo for state-of-the-art AR/VR headsets. By integrating ArcGIS world data with fused car pose data, the system placed real-world, real-time navigation markers conveniently in the user’s vision, showcasing the precision and accuracy of our sensors and data fusion technology to customers.
+Real-Time Sensor Data Integration: Designed and implemented a system to integrate GPS, IMU, and other sensor data into Unity using ProtoBuf over ZeroMQ, with the option of Python-generated fallback data if real data became unavailable. This enabled the transition from 2D to 3D visualization of real-world sensor inputs, helping the team debug previously challenging data fusion issues.
+Race Management UI: Using Typescript and Rust, created custom UI components to allow non-technical event staff from Cupra to manage VR car races in a high-profile co-marketing campaign with the general public. This work enabled us to upgrade the VR driving experience from single player to multiplayer, improving the reach and effectiveness of their campaign.
+Mentoring Interns and Knowledge Sharing: Mentored interns in Unity architecture, code design, and time management. This helped improve team productivity by enabling junior staff to become more autonomous in their work and freed up capacity for senior staff to work on product initiatives.
+
+Dyson, Hullavington, UK	July 2022 – August 2024
+Robotics Software Engineer
+Key Technologies: Unity, C#, C++, Python, CI/CD (Atlassian Bamboo)
+Enhanced Robotics Simulation: Expanded Dyson's in-house robotics simulator to test new robot designs in virtual environments. Led the implementation of a runtime system that could spawn physics-articulated bodies representing both wheeled and legged robots. This system allowed engineers to collect test data for more ambitious designs, without needing an expensive physical prototype.
+Unified 2D/3D Visualization System: Modernised the existing 2D visualization system to include the use of 3D grids, shapes, and meshes. This made it possible for developers to easily migrate 2D-based algorithms into more advanced and realistic 3D home environments.
+Cross-Domain Bug Fixing and System Stability: Took ownership of resolving co-simulation issues between the robot behavior code in C++ and the simulated environment in Unity, including performance bottlenecks and initialization issues. By improving connection reliability, internal developer adoption of the new 3D tooling increased significantly.
+Data Analysis and Simulation Insights: Used Python to consume and validate simulated robot logs; highlighting causes of unrealistic or anomalous data. Using this data, the team collectively improved the accuracy of modelling new sensors.
+Automation and CI/CD Pipeline Development: Developed and maintained user tools and CI/CD pipelines - notably the inclusion of the 3D robot simulator in robot code verification. This boosted productivity by reducing manual testing and ensured a stable main release version.
+Advanced VR Research Centre, Loughborough, UK	Oct 2019 – May 2022
+UX Engineer | XR Developer 
+Designed and developed a VR application to study human performance in engineering tasks with VR devices, focusing on metrics like error rates, task completion times, and body posture. This work provided key insights into VR interactions and technology limitations. Another key area of exploration was the development and study of novel VR user interfaces by creating test projects with devices such as the LookingGlass and Leap Motion, enhancing the understanding of immersive interactions for industrial applications.
+
+
+MBDA, Bristol, UK	Sept 2017 – August 2018
+UX Junior Engineer
+Developed a series of VR demonstrations to showcase the capabilities of VR technology to various internal and external stakeholders, including at company events and sales meetings. Additionally worked alongside the Human Factors team on interactive UX prototypes, as well as supporting military end user testing.
+
+Loughborough University, UK	Sept 2015 - July 2019
+BEng - Product Design Engineering Degree
+Additional Details can be sent per request.

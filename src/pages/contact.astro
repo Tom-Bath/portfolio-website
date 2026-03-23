@@ -1,10 +1,17 @@
 ---
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarLayout } from "@/components/sidebar-layout";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 
 import "../styles/global.css";
 
-import { Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 const contacts = [
   {
@@ -26,40 +33,205 @@ const contacts = [
     href: "https://github.com/Tom-Bath",
   },
 ];
+
+const experience = [
+  {
+    title: "Simulation Software Engineer",
+    company: "Woven by Toyota",
+    location: "Tokyo, Japan",
+    period: "Sept 2025 – Present",
+    note: "Contractor",
+    skills: ["Unity", "C#", "TypeScript", "React", "Protobuf", "UX Design"],
+  },
+  {
+    title: "Senior Software Engineer",
+    company: "LP-Research",
+    location: "Tokyo, Japan",
+    period: "Sept 2024 – Aug 2025",
+    note: "Full Time",
+    skills: ["Unity", "C#", "TypeScript", "Vue", "Rust", "Python", "MQTT", "ZeroMQ", "Protobuf"],
+  },
+  {
+    title: "Robotics Software Engineer",
+    company: "Dyson",
+    location: "Hullavington, UK",
+    period: "Jul 2022 – Aug 2024",
+    note: "Full Time",
+    skills: ["Unity", "C#", "C++", "Python", "CI/CD"],
+  },
+  {
+    title: "UX Engineer / XR Developer",
+    company: "Advanced VR Research Centre",
+    location: "Loughborough, UK",
+    period: "Oct 2019 – May 2022",
+    note: "Full Time",
+    skills: ["Unity", "C#", "XR/VR", "UX Research"],
+  },
+  {
+    title: "UX Junior Engineer",
+    company: "MBDA",
+    location: "Bristol, UK",
+    period: "Sept 2017 – Aug 2018",
+    note: "Internship",
+    skills: ["Unity", "C#", "VR", "UX Prototyping", "Human Factors"],
+  },
+  {
+    title: "BEng Product Design Engineering",
+    company: "Loughborough University",
+    location: "UK",
+    period: "Sept 2015 – Jul 2019",
+    note: "Degree",
+    skills: ["Engineering Science", "Product Design", "Materials & Manufacturing", "Software Engineering", "Statistics", "Engineering Management"],
+  },
+];
 ---
 
-<SidebarLayout client:load title="Contact" baseUrl={import.meta.env.BASE_URL} locale="en">
-  <TooltipProvider client:load>
-    <!-- Centered content area -->
-    <div class="flex-1 flex items-center justify-center">
-      <div class="max-w-4xl mx-auto px-6 py-16 w-full">
-        <!-- Header -->
-        <header class="text-center mb-12">
-          <h1 class="text-4xl font-bold mb-2">Contact</h1>
-          <p class="text-muted-foreground">Feel free to reach out.</p>
-        </header>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Tom Bath</title>
+  </head>
+  <body class="bg-background text-foreground">
+    <SidebarLayout client:load title="Contact" baseUrl={import.meta.env.BASE_URL} locale="en">
+      <TooltipProvider client:load>
+        <div class="max-w-5xl mx-auto px-6 py-16 w-full">
 
-        <!-- Contact List -->
-        <div class="space-y-6">
-          {
-            contacts.map((item) => {
-              const Icon = item.icon;
+          <!-- Page title -->
+          <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold font-bebas">Contact & Experience</h1>
+            <p class="text-muted-foreground mt-2">Feel free to reach out!</p>
+          </header>
 
-              return (
-                <a href={item.href} target="_blank" class="block">
-                  <div class="flex items-center gap-4 px-6 py-4 border border-border rounded-lg hover:bg-muted/40 transition-colors">
-                    <Icon class="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                    <span class="font-semibold">{item.label}</span>
-                    <span class="ml-auto">
-                      <ArrowUpRight class="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                    </span>
-                  </div>
-                </a>
-              );
-            })
-          }
+          <!-- Two-column layout -->
+          <div class="page-grid">
+
+            <!-- Left: Contact -->
+            <aside class="contact-col">
+              <h2 class="section-heading font-bebas">Get in Touch</h2>
+              <div class="flex flex-col gap-2">
+                {contacts.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" class="contact-pill">
+                      <Icon className="w-4 h-4 shrink-0" />
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </aside>
+
+            <!-- Right: Experience -->
+            <main class="experience-col">
+              <h2 class="section-heading font-bebas">Experience</h2>
+              <div class="cards-grid">
+                {experience.map((job) => (
+                  <Card>
+                    <CardHeader>
+                      <div class="flex items-start justify-between gap-2">
+                        <CardTitle>{job.title}</CardTitle>
+                        <span class="job-period shrink-0">{job.period}</span>
+                      </div>
+                      <CardDescription>
+                        {job.company} — {job.location}
+                        {job.note && <span class="job-note ml-2">{job.note}</span>}
+                      </CardDescription>
+                    </CardHeader>
+                    {job.skills.length > 0 && (
+                      <CardContent>
+                        <div class="flex flex-wrap gap-1.5">
+                          {job.skills.map((skill) => (
+                            <span class="skill-pill">{skill}</span>
+                          ))}
+                        </div>
+                      </CardContent>
+                    )}
+                  </Card>
+                ))}
+              </div>
+            </main>
+
+          </div>
         </div>
-      </div>
-    </div>
-  </TooltipProvider>
-</SidebarLayout>
+      </TooltipProvider>
+    </SidebarLayout>
+  </body>
+</html>
+
+<style>
+  .page-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-grid {
+      grid-template-columns: 200px 1fr;
+      align-items: start;
+    }
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+  }
+
+  /* Contact */
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: oklch(0.97 0 0);
+    background-color: oklch(0.141 0.005 285.823);
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .contact-pill:hover {
+    background-color: oklch(0.2 0.005 285.823);
+  }
+
+  /* Cards grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .job-period {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    padding-top: 0.1rem;
+  }
+
+  .job-note {
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+    background-color: var(--muted);
+    padding: 0.1rem 0.5rem;
+    border-radius: 9999px;
+    vertical-align: middle;
+  }
+
+  .skill-pill {
+    font-size: 0.75rem;
+    color: var(--foreground);
+    background-color: var(--muted);
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+</style>
