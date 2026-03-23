@@ -31,7 +31,7 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
   <body class="bg-background text-foreground">
     <a
       href={`${import.meta.env.BASE_URL}/ja/`}
-      class="fixed top-4 right-4 z-50 px-3 py-1.5 text-sm font-medium border border-border rounded-md bg-background hover:bg-muted/40 transition-colors"
+      class="fixed top-4 right-4 z-50 px-4 py-1.5 text-sm font-medium rounded-full bg-[oklch(0.267_0_0)] text-[oklch(0.97_0_0)] hover:opacity-80 transition-opacity"
     >
       日本語
     </a>
@@ -93,24 +93,24 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
 
         <!-- Dark gooey blobs -->
         <g filter="url(#gooey)">
-          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="50%" cy="10%" r="40" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="90%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="50%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="70%" cy="90%" r="10" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="90%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="30%" cy="90%" r="80" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="50%" cy="10%" r="20" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="40%" cy="20%" r="120" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="80%" cy="60%" r="80" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="17%" cy="10%" r="100" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="40%" cy="60%" r="90" fill="oklch(0.141 0.005 285.823)" />
-          <circle class="blob" cx="10%" cy="50%" r="80" fill="oklch(0.141 0.005 285.823)" />
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="50%" cy="10%" r="40" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="90%" cy="20%" r="120" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="50%" cy="60%" r="80" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="70%" cy="90%" r="10" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="90%" cy="60%" r="90" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="30%" cy="90%" r="80" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="10%" cy="10%" r="80" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="50%" cy="10%" r="20" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="17%" cy="15%" r="70" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="40%" cy="20%" r="120" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="30%" cy="25%" r="30" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="80%" cy="60%" r="80" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="17%" cy="10%" r="100" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="40%" cy="60%" r="90" fill="oklch(0.267 0 0)" />
+          <circle class="blob" cx="10%" cy="50%" r="80" fill="oklch(0.267 0 0)" />
         </g>
 
         <!-- Dark title: always visible (shows on light background) -->
@@ -120,7 +120,7 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
           text-anchor="middle"
           dominant-baseline="hanging"
           class="blob-hero__title"
-          fill="oklch(0.141 0.005 285.823)"
+          fill="oklch(0.267 0 0)"
         >TOM BATH</text>
 
         <!-- Light title: only revealed where blobs pass over the text -->
@@ -137,8 +137,7 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
 
       <div class="blob-hero__pills">
         <p class="blob-hero__subtitle">
-          UX engineer exploring interaction design, spatial computing, and
-          complex systems.
+          UX Designer x Software Engineer
         </p>
         <a href={`${import.meta.env.BASE_URL}/contact`} class="blob-hero__contact">
           Contact me!
@@ -277,7 +276,7 @@ const blobAnimationCSS = Array.from({ length: 18 }, (_, idx) => {
 
   .blob-hero__subtitle {
     color: oklch(0.97 0 0);
-    background-color: oklch(0.141 0.005 285.823);
+    background-color: oklch(0.267 0 0);
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
     border-radius: 9999px;
