@@ -1,7 +1,7 @@
 ---
 title: XRナビゲーション
 subtitle: 拡張現実環境における空間ナビゲーションのデザイン
-heroImage: "/portfolio-website/case-studies/virtualsceneweb.png"
+heroImage: "/portfolio-website/case-studies/virtualsceneweb.webp"
 challenge: "技術は強力だが見えない。B2Bクライアントを獲得するには、説得力のあるインタラクティブなデモが必要だった。"
 role: "コンセプト、UXデザイン、Unity開発、インターン指導"
 duration: ""
@@ -14,7 +14,7 @@ duration: ""
 この技術は、車両搭載のIMUデバイス、車両搭載のGNSSアンテナ、およびXRヘッドセットのIMUからのデータを組み合わせるものです。これにより、出力されるポーズは十分な精度を持ち、走行中の車内からでも高精度で仮想オブジェクトを現実空間にレンダリングできます。この機能はこれまで、実車を使ったVRレーシング体験によってデモンストレーションされてきました。
 
 <figure>
-  <img src="/portfolio-website/case-studies/cardiagramblue.png" alt="車両内のセンサーフュージョンシステムの図" class="w-full h-auto" />
+  <img src="/portfolio-website/case-studies/cardiagramblue.webp" alt="車両内のセンサーフュージョンシステムの図" class="w-full h-auto" />
   <figcaption class="text-sm text-muted-foreground mt-2">車両内のセンサーフュージョンシステムの図</figcaption>
 </figure>
 

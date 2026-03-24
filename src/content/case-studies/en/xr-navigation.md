@@ -1,7 +1,7 @@
 ---
 title: XR Navigation
 subtitle: Designing spatial navigation for extended reality environments.
-heroImage: "/portfolio-website/case-studies/virtualsceneweb.png"
+heroImage: "/portfolio-website/case-studies/virtualsceneweb.webp"
 challenge: "The technology is powerful but invisible - a compelling interactive demo was needed to convert B2B clients."
 role: "Concept, UX Design, Unity Development, Intern Mentoring"
 duration: ""
@@ -14,7 +14,7 @@ This project centred on designing and developing a concept XR navigation applica
 The technology combines data from a vehicle-mounted IMU device, a vehicle-mounted GNSS antenna, and a XR headset IMU. Together, the output pose is accurate enough to render virtual objects with high precision in the real world while inside a moving vehicle. This capability has previously been demonstrated through real-car VR racing experiences.
 
 <figure>
-  <img src="/portfolio-website/case-studies/cardiagramblue.png" alt="Diagram of the sensor fusion system inside a vehicle" class="w-full h-auto" />
+  <img src="/portfolio-website/case-studies/cardiagramblue.webp" alt="Diagram of the sensor fusion system inside a vehicle" class="w-full h-auto" />
   <figcaption class="text-sm text-muted-foreground mt-2">Diagram of the sensor fusion system inside a vehicle</figcaption>
 </figure>
 
