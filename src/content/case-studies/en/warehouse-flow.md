@@ -29,6 +29,11 @@ flowchart LR
     C --> D[Evaluate Performance]
 ```
 
+<figure>
+  <img src="/portfolio-website/scans/scan-webapp.webp" alt="Full wireframe overview of the modeling tool" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Full wireframe overview of the modeling tool</figcaption>
+</figure>
+
 These models feed into a simulation engine that models system behaviour such as:
 
 - Worker movement and actions
@@ -85,21 +90,58 @@ I was given freedom to design the interface for presenting this feedback. I expl
 
 The final design presented validation issues in a prioritized list using collapsible sections. Ordering issues by priority helped users resolve root problems first, often eliminating several secondary issues automatically. Visual warning symbols were used sparingly, as large numbers of icons created an intimidating experience for both developers and end users.
 
+<figure>
+  <img src="/portfolio-website/scans/scan-validation-tab.webp" alt="Wireframe concepts explored for the validation feedback panel" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Wireframe concepts explored for the validation feedback panel</figcaption>
+</figure>
+
+<figure>
+  <img src="/portfolio-website/scans/scan-final-validation-tab.webp" alt="The collapsible validation panel in context within the full application view" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">The collapsible validation panel in context within the full application view</figcaption>
+</figure>
+
 ### Improving Node Readability
 
 The mental disconnect between process logic and physical space was partly a visual problem - the diagram contained too many different element types, and their relationships weren't clear at a glance. Several changes addressed this:
 
 In earlier versions of the process view, logical blocks and “Link” blocks were separate elements. The Link blocks represented connections to physical equipment in the warehouse layout, which added extra visual clutter and made diagrams harder to read. I proposed merging these into a single logical block, with the physical connection shown as a small tab beneath the node. This reduced the number of elements in the diagram and simplified the workflow.
 
+<figure>
+  <img src="/portfolio-website/scans/scan-new-blocks.webp" alt="Sketches exploring the merged logical block design" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Sketches exploring the merged logical block design, eliminating the separate Link block</figcaption>
+</figure>
+
 The iconography used in the process view was also inconsistent. Some nodes used standard icons while others used abstract Value Stream Mapping–style symbols, which many users found difficult to interpret. I helped standardize the interface by replacing these with clear, conventional icons, improving readability for both Kaizen experts and non-specialist users.
+
+<figure>
+  <img src="/portfolio-website/scans/scan-icon-evolution.webp" alt="Evolving from abstract VSM-style symbols to unified block representations" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Evolving from abstract VSM-style symbols (Logical/Physical) to unified block representations</figcaption>
+</figure>
 
 Finally, the physical layout view previously relied on an inconsistent collection of PNG icons. These were replaced with a cohesive set of coloured isometric graphics, making physical equipment easier to recognize at a glance. This also created a stronger visual distinction between physical elements in the layout view and logical process nodes, helping users understand which parts of the model represented real-world equipment and which represented workflow logic.
 
+<figure>
+  <img src="/portfolio-website/scans/scan-process-view-blocks.webp" alt="Block type explorations for the warehouse process nodes" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Exploring block type categories inspired by VSM notation for the warehouse process nodes</figcaption>
+</figure>
+
+
+
 ### Diagram Navigation and Multi-Select
 
-Large real-world warehouse flows exposed a core scaling problem: with dozens of nodes, even simple reorganisation tasks became laborious, and the visual complexity made it hard to track what was selected or being edited.
+Large real-world warehouse flows exposed a core scaling problem: with dozens of nodes, even simple reorganisation tasks became laborious, and the visual complexity made it hard to track what was selected or being edited. One specific issue was that selected connection wires had no visual indicator — on a large diagram with many overlapping connections, it was impossible to tell which wire was active without tracing it manually.
 
-User testing also revealed that users wanted to reorganize large diagrams more easily. I helped introduce multi-select functionality, allowing multiple nodes to be moved simultaneously. Working with the UX team, we defined mouse and keyboard interactions that felt natural to technical users, including drag-based selection using the left mouse button.
+User testing also revealed that users wanted to reorganize large diagrams more easily. I helped introduce multi-select functionality, allowing multiple nodes to be moved simultaneously. Working with the UX team, we defined mouse and keyboard interactions that felt natural to technical users, including drag-based selection using the left mouse button. Selected wires were also given a colour highlight, making them immediately identifiable.
+
+<figure>
+  <img src="/portfolio-website/scans/scan-connection-line.webp" alt="Comparison of selected wire with and without visual highlight" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Left: selected wire with no visual indicator. Right: selected wire highlighted in colour</figcaption>
+</figure>
+
+<figure>
+  <img src="/portfolio-website/scans/scan-drag-select.webp" alt="Drag-based multi-select interaction" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Drag-based multi-select, allowing multiple nodes to be moved simultaneously</figcaption>
+</figure>
 
 This iterative approach allowed the team to refine the interface continuously while development progressed. One limitation was that feedback often came from a relatively small number of users, which introduced some risk of solutions being optimised for specific workflows rather than broader use cases.
 

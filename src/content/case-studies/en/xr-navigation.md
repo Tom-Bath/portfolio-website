@@ -85,6 +85,11 @@ World-locked assets are virtual objects anchored to specific GPS coordinates - t
 
 - Waypoints: Semi-transparent markers at intersections. These allowed the user to see through them to spot oncoming traffic or pedestrians. The arrows had to be tilted up slightly towards the user so they could be seen while approaching, but not block the users view of the road entirely.
 
+<figure>
+  <img src="/portfolio-website/scans/scan-3d-ui.webp" alt="Sketches exploring shapes for world-locked elements" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Sketches exploring different shapes for each world-locked element; pros and cons of each approach are annotated on the image</figcaption>
+</figure>
+
 > **Route Overlays** and **Overhead Text** were dropped from the final solution. Initially testing showed these features had potential, but the ArcGIS route data wasn't high-fidelity enough to make the lines "hug" the curves of the road perfectly; a jittery line on the ground felt low-quality. Additionally, sizing the overhead text was challenging as they either took up too much visual space, or the fonts were too small to read.
 
 **Key Finding:** With the world outside the car having a lot of visual information already, it very much felt "Less is More" in terms of UX. Early versions of the app felt overwhelming with visual cues and information, so the final result had a limited number of waypoints and gates.
@@ -92,6 +97,11 @@ World-locked assets are virtual objects anchored to specific GPS coordinates - t
 ### 2D In-Car Dashboard
 
 These elements sit inside the car rather than out in the world - pinned to the vehicle's interior regardless of where it's driving. The goal was to show that a virtual speedometer and minimap could feel as stable and readable as a physical screen, even with constant vehicle movement.
+
+<figure>
+  <img src="/portfolio-website/scans/scan-dashboard-frames.webp" alt="Conceptual sketches of 2D dashboard shapes" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Early conceptual sketches of 2D shapes with no fixed function assigned, exploring how they could be used in the dashboard</figcaption>
+</figure>
 
 - Legibility & Contrast: I directed the UI production with a focus on high-contrast fonts and bold weights. Because lighting changed constantly (tunnels, direct sun), a thinner UI would have been unreadable.
 
@@ -114,5 +124,10 @@ In retrospect, I would prioritize showing off the buyer-specific data visualizat
 Testing showed the dashboard elements were functional, but with further user testing I believe they could have been made smaller to make room for additional UX components like interactive media controls.
 
 Leading this project end-to-end taught me that ownership requires a different kind of communication. Writing clear success criteria for interns and giving structured feedback were skills I had to develop deliberately. I learned that ambiguity in a brief costs more time than it saves, and that clear constraints give junior contributors more creative confidence, not less.
+
+<figure>
+  <img src="/portfolio-website/scans/scan-dashboard.webp" alt="Dashboard UI sketches" class="w-full h-auto" />
+  <figcaption class="text-sm text-muted-foreground mt-2">Dashboard UI sketches</figcaption>
+</figure>
 
 > Diagrams and sketches shown are illustrative and not representative of the final product.
