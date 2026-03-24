@@ -16,9 +16,10 @@ interface SidebarLayoutProps {
   title?: string
   baseUrl?: string
   locale?: Locale
+  invertHeader?: boolean
 }
 
-export function SidebarLayout({ children, title, baseUrl, locale = "en" }: SidebarLayoutProps) {
+export function SidebarLayout({ children, title, baseUrl, locale = "en", invertHeader = false }: SidebarLayoutProps) {
   const [headerVisible, setHeaderVisible] = React.useState(true)
   const lastScrollY = React.useRef(0)
 
@@ -45,9 +46,11 @@ export function SidebarLayout({ children, title, baseUrl, locale = "en" }: Sideb
       <main className="w-full flex flex-col">
         {title && baseUrl && (
           <div
-            className={`sticky top-0 z-10 flex items-center gap-4 border-b px-6 py-4 bg-background transition-transform duration-300 ${
-              headerVisible ? "translate-y-0" : "-translate-y-full"
-            }`}
+            className={`sticky top-0 z-20 flex items-center gap-4 px-6 py-4 transition-transform duration-300 ${
+              invertHeader
+                ? "bg-foreground [&_button]:text-background [&_svg]:text-background **:data-[slot=breadcrumb-list]:text-background/60 **:data-[slot=breadcrumb-page]:text-background **:data-[slot=breadcrumb-link]:hover:text-background"
+                : "bg-background border-b"
+            } ${headerVisible ? "translate-y-0" : "-translate-y-full"}`}
           >
             <SidebarTrigger />
             <Breadcrumb>

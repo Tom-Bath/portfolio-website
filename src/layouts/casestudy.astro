@@ -19,35 +19,61 @@ const { title, subtitle, heroImage, locale = "en" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-background text-foreground">
-    <SidebarLayout client:load title={title} baseUrl={import.meta.env.BASE_URL} locale={locale}>
+    <SidebarLayout client:load title={title} baseUrl={import.meta.env.BASE_URL} locale={locale} invertHeader={true}>
       <TooltipProvider client:load>
-        <div class="flex-1 flex items-center justify-center">
-          <div class="max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-16 w-full">
-            <header class="mb-12 text-center">
+        <div class="flex-1">
+          <section id="case-hero" class="bg-foreground text-background">
+            <div class="max-w-4xl mx-auto px-4 pt-12 md:px-6 text-center">
               <h1 class="text-6xl font-bold mb-2 font-bebas">{title}</h1>
+              {subtitle && <p class="text-lg opacity-70">{subtitle}</p>}
+            </div>
+          </section>
 
-              {subtitle && <p class="text-lg text-muted-foreground">{subtitle}</p>}
+          {heroImage && (
+            <div id="case-hero-img-wrap" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6">
+              <img
+                id="case-hero-img"
+                src={heroImage}
+                alt={title}
+                class="rounded-lg shadow-lg w-full block"
+              />
+            </div>
+          )}
 
-              {
-                heroImage && (
-                  <img
-                    src={heroImage}
-                    alt={title}
-                    class="mt-6 rounded-lg shadow-lg"
-                  />
-                )
-              }
-            </header>
-
-            <article
-              class="mx-auto space-y-12 prose prose-neutral dark:prose-invert"
-            >
+          <div class="max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-16 w-full">
+            <article class="mx-auto space-y-12 prose prose-neutral dark:prose-invert">
               <slot />
             </article>
           </div>
         </div>
       </TooltipProvider>
     </SidebarLayout>
+    {heroImage && (
+      <script>
+        function adjustHeroLayout() {
+          const img = document.getElementById("case-hero-img") as HTMLImageElement | null;
+          const hero = document.getElementById("case-hero") as HTMLElement | null;
+          const wrap = document.getElementById("case-hero-img-wrap") as HTMLElement | null;
+          if (!img || !hero || !wrap) return;
+
+          const halfH = img.offsetHeight / 2;
+          const gap = 24; // px gap between subtitle and image top
+          hero.style.paddingBottom = (halfH + gap) + "px";
+          wrap.style.marginTop = "-" + halfH + "px";
+        }
+
+        const img = document.getElementById("case-hero-img") as HTMLImageElement | null;
+        if (img) {
+          if (img.complete && img.naturalHeight > 0) {
+            adjustHeroLayout();
+          } else {
+            img.addEventListener("load", adjustHeroLayout);
+          }
+          window.addEventListener("resize", adjustHeroLayout);
+        }
+      </script>
+    )}
+
     <script type="module" is:inline>
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
