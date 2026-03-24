@@ -7,8 +7,6 @@ role: "Simulation Engineering, UX Design, Interaction Design"
 duration: "6 Months"
 ---
 
----
-
 ## Overview
 
 **Kaizen** is a methodology for identifying and eliminating inefficiencies in industrial operations.
