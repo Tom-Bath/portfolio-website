@@ -11,7 +11,7 @@ duration: ""
 
 This project centred on designing and developing a concept XR navigation application built to demonstrate a proprietary IMU sensor fusion technology to prospective clients.
 
-The technology combines data from a vehicle-mounted IMU device, a vehicle-mounted GNSS antenna, and a XR headset IMU. Together, the output pose is accurate enough to render virtual objects with high precision in the real world while inside a moving vehicle. This capability has previously been demonstrated through real-car VR racing experiences.
+The technology combines data from a vehicle-mounted IMU device, a vehicle-mounted GNSS antenna, and an XR headset IMU. Together, the output pose is accurate enough to render virtual objects with high precision in the real world while inside a moving vehicle. This capability has previously been demonstrated through real-car VR racing experiences.
 
 <figure>
   <img src="/portfolio-website/case-studies/cardiagramblue.webp" alt="Diagram of the sensor fusion system inside a vehicle" class="w-full h-auto" />
@@ -50,7 +50,7 @@ At the start of the project, I analyzed the XR landscape - specifically the shif
 
 - Technical Constraints: While AR glasses have improved a lot in recent years - both in field of view and rendering quality - there are still real limits to design around. The narrow FOV means critical UI needs to stay central, and small text or fine detail can be hard to read reliably.
 
-Due to our hardware constraints, it seemed neccessary to keep the interface simple and high-contrast - not just as a stylistic choice, but as a requirement for legibility under real-world conditions.
+Due to our hardware constraints, it seemed necessary to keep the interface simple and high-contrast - not just as a stylistic choice, but as a requirement for legibility under real-world conditions.
 
 <figure>
   <img src="/portfolio-website/case-studies/audi.png" alt="Audi AR HUD example" class="w-full h-auto" />
@@ -63,7 +63,7 @@ Due to our hardware constraints, it seemed neccessary to keep the interface simp
 
 ### Design Strategy
 
-Designing for a moving vehicle required synchronized management of three distinct spatial depths:
+Designing for a moving vehicle meant working across three distinct spatial depths at once:
 
 - World-Fixed: Elements pinned to GPS coordinates via ArcGIS (Route guidance, waypoints).
 - Vehicle-Fixed: Elements anchored to the car's interior (speedometer, minimap).
@@ -73,9 +73,9 @@ Based on research and initial testing, I tried to design with these principles:
 
 - Focus on high-contrast, large-scale shapes and typography. This mitigated the "micro-jitter" common in sensor fusion and reduced motion sickness.
 - Positioning all UX within the windshield’s peripheral area. This optimized tracking stability and kept the user’s gaze aligned with the vehicle's direction.
-- Designing for a large percentile of end-users. Initial testing confirmed that some UI elements obstructed the field of view for shorter users.
+- Designing for a broad range of end-users. Initial testing confirmed that some UI elements obstructed the field of view for shorter users.
 
-**Note:** Due to safety concerns identified during early testing, we pivoted the UX from a driver experience to a passenger experience. This shaped every subsequent decision about UI placement and interaction model.
+**Note:** Due to safety concerns identified during early testing, we pivoted the UX from a driver experience to a passenger experience. This drove every subsequent decision about UI placement and interaction model.
 
 ### 3D World-Locked Assets
 
@@ -117,7 +117,7 @@ These elements sit inside the car rather than out in the world - pinned to the v
 
 ## Reflection
 
-Ultimately, the project succeeded in its primary goal: making invisible technology visible. By creating a tangible bridge between raw IMU data and a functional user experience, we provided clients with a canvas to project their own business solutions. The demo was successfully shown to a prospective business who became a key client.
+Ultimately, the project succeeded in its primary goal: making invisible technology visible. Translating raw IMU data into a functional user experience gave clients something concrete to map their own use cases onto. The demo was successfully shown to a prospective business who became a key client.
 
 In retrospect, I would prioritize showing off the buyer-specific data visualizations more (like low-latency data precision) to more directly encourage business sales. While the app concept is relatable, the high precision of objects outside the car wasn't so clear to end users.
 

@@ -7,9 +7,9 @@ Experienced software engineer with JLPT N3 and based in Tokyo. Experience buildi
 Woven by Toyota, Tokyo, Japan	Sept 2025 – Present (Contractor)
 Simulation Software Engineer
 Key Technologies: Unity, C#, TypeScript, React, Protobuf
-Key Feature Enhancements: Built and delivered a  vehicle logistics modelling simulation so users could simulate their complete warehouse operations (Kaizen). This evolved the project from a prototype to a MVP that enabled users to identify distribution hub bottlenecks.
-Validation Systems: Engineered a validation tool for agent behaviors and warehouse layouts, eliminating developer errors and minimizing debugging time. The tool became a key end-user feature, providing instant layout verification without needing to run time-consuming and expensive simulations.
-UX Test Documentation: Produced user enablement documentation that reduced developer support during testing from 5 team members to 1, freeing significant development capacity.
+Key Feature Enhancements: Built and delivered a combined process flow and physical layout modelling platform backed by a Unity simulation engine, enabling Kaizen Experts to design and validate complete warehouse operations in a single tool. Evolved the project from a proof-of-concept to an MVP that users could build and run independently, enabling them to identify distribution hub bottlenecks without engineer support.
+Validation Systems: Engineered a Unity validation system that analysed model configuration files and surfaced prioritised, collapsible feedback directly in the React frontend. By enabling users to catch and resolve errors before running costly simulations, the tool significantly reduced the need for direct engineer involvement during user testing sessions.
+Interaction Design: Identified and addressed core usability gaps in the process flow diagram: introduced drag-based multi-select for large warehouse models, added colour highlights to selected connection wires, and collaborated with designers to replace inconsistent VSM iconography with a unified system visually separating process logic from physical equipment.
 Quality Improvements: Refined the simulation to eliminate float errors and resolve mistimed events, ensuring deterministic outcomes and enabling end-users to compare layouts with precision. Regularly maintained React UX components which helped keep the UI bug free.
 LP-Research, Tokyo, Japan	Sept 2024 – August 2025
 Senior Software Engineer
