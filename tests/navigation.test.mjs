@@ -2,48 +2,34 @@
  * Navigation tests — verifies that all site links load real pages
  * and land on the expected content.
  *
+ * Uses the Page Object Model (POM): each page of the site has its own class
+ * in tests/pages/. Tests import those classes and call readable methods
+ * rather than writing Selenium selectors inline.
+ *
  * Prerequisites:
  *   1. Run `pnpm dev` in a separate terminal first.
- *   2. Chrome must be installed. Selenium will auto-download ChromeDriver.
+ *   2. Chrome must be installed. Selenium will auto-manage ChromeDriver.
  *
  * Run tests:
  *   pnpm test
  */
 
-import { Builder, By, until } from 'selenium-webdriver';
+import { Builder } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
 import { describe, test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 
-// The base URL where `pnpm dev` serves the site.
-const BASE_URL = 'http://localhost:4321/portfolio-website';
-
-// How long (ms) to wait for an element or URL change before failing.
-const TIMEOUT_MS = 10_000;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-/** Navigate to a URL and return the full visible body text once loaded. */
-async function navigateTo(driver, url) {
-  await driver.get(url);
-  await driver.wait(until.elementLocated(By.css('body')), TIMEOUT_MS);
-  return driver.findElement(By.css('body')).getText();
-}
-
-// ---------------------------------------------------------------------------
-// Tests
-// ---------------------------------------------------------------------------
+import { HomePage } from './pages/HomePage.mjs';
+import { CaseStudyPage } from './pages/CaseStudyPage.mjs';
+import { ContactPage } from './pages/ContactPage.mjs';
 
 describe('Site navigation', () => {
-  /** `driver` is the browser instance shared across all tests in this file. */
   let driver;
 
-  // Runs once before all tests — opens a headless Chrome window.
+  // Opens a headless Chrome window once before all tests.
   before(async () => {
     const options = new chrome.Options();
-    options.addArguments('--headless=new'); // run silently, no visible window
+    options.addArguments('--headless=new');
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-dev-shm-usage');
 
@@ -53,7 +39,7 @@ describe('Site navigation', () => {
       .build();
   });
 
-  // Runs once after all tests — closes the browser.
+  // Closes the browser once after all tests.
   after(async () => {
     await driver.quit();
   });
@@ -62,25 +48,27 @@ describe('Site navigation', () => {
   // 1. Every page URL should load without a 404 / error page
   // -------------------------------------------------------------------------
   describe('All pages load without errors', () => {
+    // Each entry describes which page object to use and how to open it.
     const pages = [
-      { name: 'Home (EN)',              url: `${BASE_URL}/` },
-      { name: 'Contact (EN)',           url: `${BASE_URL}/contact` },
-      { name: 'Warehouse Flow (EN)',    url: `${BASE_URL}/warehouse-flow` },
-      { name: 'XR Navigation (EN)',     url: `${BASE_URL}/xr-navigation` },
-      { name: 'Home (JA)',              url: `${BASE_URL}/ja/` },
-      { name: 'Contact (JA)',           url: `${BASE_URL}/ja/contact` },
-      { name: 'Warehouse Flow (JA)',    url: `${BASE_URL}/ja/warehouse-flow` },
-      { name: 'XR Navigation (JA)',     url: `${BASE_URL}/ja/xr-navigation` },
+      { name: 'Home (EN)',           Page: HomePage,      args: [] },
+      { name: 'Home (JA)',           Page: HomePage,      args: ['ja'] },
+      { name: 'Contact (EN)',        Page: ContactPage,   args: [] },
+      { name: 'Contact (JA)',        Page: ContactPage,   args: ['ja'] },
+      { name: 'Warehouse Flow (EN)', Page: CaseStudyPage, args: ['warehouse-flow'] },
+      { name: 'Warehouse Flow (JA)', Page: CaseStudyPage, args: ['warehouse-flow', 'ja'] },
+      { name: 'XR Navigation (EN)',  Page: CaseStudyPage, args: ['xr-navigation'] },
+      { name: 'XR Navigation (JA)',  Page: CaseStudyPage, args: ['xr-navigation', 'ja'] },
     ];
 
-    for (const { name, url } of pages) {
+    for (const { name, Page, args } of pages) {
       test(`${name} loads`, async () => {
-        const bodyText = await navigateTo(driver, url);
-        const lower = bodyText.toLowerCase();
+        const page = new Page(driver);
+        await page.open(...args);
+        const bodyText = (await page.getBodyText()).toLowerCase();
 
         assert.ok(
-          !lower.includes('404') && !lower.includes('page not found'),
-          `"${name}" at ${url} appears to be a 404 / not-found page`
+          !bodyText.includes('404') && !bodyText.includes('page not found'),
+          `"${name}" appears to be a 404 / not-found page`
         );
       });
     }
@@ -91,39 +79,31 @@ describe('Site navigation', () => {
   // -------------------------------------------------------------------------
   describe('Pages show the correct content', () => {
     test('Warehouse Flow page has the correct heading', async () => {
-      await navigateTo(driver, `${BASE_URL}/warehouse-flow`);
-
-      const heading = await driver.wait(
-        until.elementLocated(By.css('h1')),
-        TIMEOUT_MS,
-        'Timed out waiting for <h1> on Warehouse Flow page'
-      );
-      const text = await heading.getText();
+      const page = new CaseStudyPage(driver);
+      await page.open('warehouse-flow');
+      const heading = await page.getHeading();
 
       assert.ok(
-        text.includes('Warehouse Flow'),
-        `Expected h1 to include "Warehouse Flow", got: "${text}"`
+        heading.includes('Warehouse Flow'),
+        `Expected h1 to include "Warehouse Flow", got: "${heading}"`
       );
     });
 
     test('XR Navigation page has the correct heading', async () => {
-      await navigateTo(driver, `${BASE_URL}/xr-navigation`);
-
-      const heading = await driver.wait(
-        until.elementLocated(By.css('h1')),
-        TIMEOUT_MS,
-        'Timed out waiting for <h1> on XR Navigation page'
-      );
-      const text = await heading.getText();
+      const page = new CaseStudyPage(driver);
+      await page.open('xr-navigation');
+      const heading = await page.getHeading();
 
       assert.ok(
-        text.includes('XR Navigation'),
-        `Expected h1 to include "XR Navigation", got: "${text}"`
+        heading.includes('XR Navigation'),
+        `Expected h1 to include "XR Navigation", got: "${heading}"`
       );
     });
 
     test('Contact page shows contact details', async () => {
-      const bodyText = await navigateTo(driver, `${BASE_URL}/contact`);
+      const page = new ContactPage(driver);
+      await page.open();
+      const bodyText = await page.getBodyText();
 
       assert.ok(
         bodyText.includes('Email') || bodyText.includes('LinkedIn'),
@@ -137,60 +117,35 @@ describe('Site navigation', () => {
   // -------------------------------------------------------------------------
   describe('Homepage links navigate to the right pages', () => {
     test('Warehouse Flow link goes to the Warehouse Flow case study', async () => {
-      await navigateTo(driver, `${BASE_URL}/`);
+      const home = new HomePage(driver);
+      await home.open();
+      await home.clickWarehouseFlowLink();
 
-      // Find the link using a partial href match — more robust than relying on link text.
-      const link = await driver.wait(
-        until.elementLocated(By.css('a[href*="warehouse-flow"]')),
-        TIMEOUT_MS,
-        'Could not find a Warehouse Flow link on the homepage'
-      );
-      await link.click();
-
-      await driver.wait(until.urlContains('warehouse-flow'), TIMEOUT_MS);
-
-      const currentUrl = await driver.getCurrentUrl();
       assert.ok(
-        currentUrl.includes('warehouse-flow'),
-        `Expected URL to contain "warehouse-flow" after clicking the link, got: ${currentUrl}`
+        (await driver.getCurrentUrl()).includes('warehouse-flow'),
+        'URL should contain "warehouse-flow" after clicking the link'
       );
     });
 
     test('XR Navigation link goes to the XR Navigation case study', async () => {
-      await navigateTo(driver, `${BASE_URL}/`);
+      const home = new HomePage(driver);
+      await home.open();
+      await home.clickXrNavigationLink();
 
-      const link = await driver.wait(
-        until.elementLocated(By.css('a[href*="xr-navigation"]')),
-        TIMEOUT_MS,
-        'Could not find an XR Navigation link on the homepage'
-      );
-      await link.click();
-
-      await driver.wait(until.urlContains('xr-navigation'), TIMEOUT_MS);
-
-      const currentUrl = await driver.getCurrentUrl();
       assert.ok(
-        currentUrl.includes('xr-navigation'),
-        `Expected URL to contain "xr-navigation" after clicking the link, got: ${currentUrl}`
+        (await driver.getCurrentUrl()).includes('xr-navigation'),
+        'URL should contain "xr-navigation" after clicking the link'
       );
     });
 
     test('Contact link goes to the contact page', async () => {
-      await navigateTo(driver, `${BASE_URL}/`);
+      const home = new HomePage(driver);
+      await home.open();
+      await home.clickContactLink();
 
-      const link = await driver.wait(
-        until.elementLocated(By.css('a[href*="/contact"]')),
-        TIMEOUT_MS,
-        'Could not find a Contact link on the homepage'
-      );
-      await link.click();
-
-      await driver.wait(until.urlContains('contact'), TIMEOUT_MS);
-
-      const currentUrl = await driver.getCurrentUrl();
       assert.ok(
-        currentUrl.includes('contact'),
-        `Expected URL to contain "contact" after clicking the link, got: ${currentUrl}`
+        (await driver.getCurrentUrl()).includes('contact'),
+        'URL should contain "contact" after clicking the link'
       );
     });
   });
